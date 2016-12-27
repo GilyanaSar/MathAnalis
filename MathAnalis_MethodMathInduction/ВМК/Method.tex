@@ -1,0 +1,894 @@
+\documentclass[12pt]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cancel}
+
+%\usepackage[leqno]{amsmath}
+\pagestyle{empty}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% Цвета для гиперссылок
+\definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
+\definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
+
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\usepackage{tikz}
+\usepackage{chngcntr}
+
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+
+
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+\vspace{5mm}
+
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+
+\parskip=1pt %интервал между абзацами
+\oddsidemargin=-1.3cm %отступ от правого края
+\topmargin=-2.5cm %отступ от верхнего края
+\textwidth=18.5cm %Ширина текста
+\textheight=24cm
+
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\renewcommand{\baselinestretch}{1.25}%Расстояние между строками
+
+
+
+
+\begin{document}
+	
+	\line(1,0){520}\vspace{-4mm}
+	
+	\begin{center}
+		{\bfМетод математической индукции}\vspace{-6mm}
+	\end{center}
+	
+	\line(1,0){520}
+	\medskip
+	
+	{\bf\underline{Утверждение}} ({\it Метод математической индукции}):
+	
+	Пусть $M\subset N$ - такое множество, что:
+	
+	1) $1\in M$ ({\it база индукции})
+	
+	2) $\forall n\in N$ из того, что $n\in M$ следует, что $(n+1)\in M$ ({\it индукционный переход});\vspace{1mm}
+	
+	\quadТогда $M = N$
+	
+	\vspace{-1mm}
+	\line(1,0){520}
+	
+	\vspace{4mm}
+	{\bf 1.1.}({\it2}) $\bullet$ Докажите, что
+	
+	\vspace{3mm}
+	\begin{center}
+	$
+	1^2+2^2+\dots+n^2 = \sum_{k=1}^{n}k^2 = \dfrac{n(n+1)(2n+1)}{6}
+	$
+	
+	
+	\end{center}
+	
+	\quad{\it Как найти сумму квадратов, если ответ неизвестен?}
+	
+	
+	\hspace{-2mm}Доказательство:
+	\vspace{1mm}
+	
+	1) Докажем, что данное утверждение верно при $n = 1$
+	
+	\vspace{1mm}
+	\quad$
+	1^2 = 1 \equiv \dfrac{1\cdot(1+1)\cdot(2+1)}{6} = \dfrac{\bcancel{2\cdot3}}{\bcancel{6}} = 1
+	$\vspace{1mm}
+	
+	На всякий случай докажем данное утверждение при $n=2$
+	
+	\vspace{1mm}
+	
+	\quad$
+	1^2+2^2 = 1+4 = 5 \equiv \dfrac{2\cdot(2+1)\cdot(2\cdot2+1)}{6} = \dfrac{\bcancel{2\cdot3}\cdot5}{\bcancel{6}} = 5
+	$
+	
+	\vspace{2mm}
+	2) Предположим, что данное утверждение верно при n, то оно верно при $n+1$
+	\medskip
+	
+	$
+	1^2+2^2+\dots+n^2+(n+1)^2 = \dfrac{n(n+1)(2n+1)}{6} +(n+1)^2 = (n+1)\cdot\left(\dfrac{n(2n+1)}{6}+n+1\right) = 
+	$
+	
+	$
+	\dfrac{(n+1)(2n^2+n+6n+6)}{6} = \dfrac{(n+1)(2n^2+7n+6)}{6}
+	$
+	\medskip
+	
+	\quad$D = b^2-4ac = 7^2 -4\cdot2\cdot6 = 49 - 48 = 1 = 1^2$
+	
+	\medskip
+	
+	\qquad$
+	x_1 = \dfrac{-7 + \sqrt{D}}{4} = \dfrac{-7 + 1}{4} = \dfrac{-6}{4} = -\dfrac{3}{2} \hspace{1.6cm}  x_2 \dfrac{-7-1}{4} = -2
+	$
+	\medskip
+	
+	\qquad$
+	\dfrac{(n+1)(n+2)(2n+3)}{6} = \dfrac{(n+1)((n+1)+1)(2(n+1)+1}{6}
+	$
+	
+	\medskip
+	{\itДоказано.}\medskip
+	
+	{\bf1.2.} Докажите, что сумма кубов $1^3+2^3+\dots+n^3$ является точным квадратом. Например, $1=1^3$, $1+2^3=1+8=9=3^2$, $1+2^3+3^3=1+8+27=36=6^2$
+	
+	
+	
+	\hspace{-2mm} Доказательство:
+	\vspace{1mm}
+	
+	Или другими словами, докажем данное утверждение:
+	
+	\qquad$
+	1^3+2^3+\dots+n^3 = (1+2+\dots+n)^2
+	$\medskip
+	
+	1) Докажем, что данное утвеждение верно при $n=1$
+	
+	\quad$
+	1^3 = 1 \equiv 1^2 = 1
+	$
+	
+	2) Предположим, что данное утверждение верно при n, то оно верно при $n+1$\medskip
+	
+	$
+	1^3+2^3+\dots+n^3+(n+1)^3 = (1+2+3+\dots+n)^2+(n+1)^3
+	$
+	
+	\line(1,0){520}
+	
+	\quadДокажем данное утверждение:\smallskip
+	
+	\qquad$
+	1+2+\dots+n = \dfrac{n(n+1)}{2}
+	$
+	
+	1) Предположим, что данное утверждение верно при $n=1$\vspace{2mm}
+	
+	\quad $
+		1 \equiv \dfrac{1\cdot(1+1)}{2} = \dfrac{\bcancel{2}}{\bcancel{2}} = 1
+	$
+	
+	\vspace{2mm}
+	2) Предположим, что данное утверждение верно при n, то оно верно при $n+1$
+	
+	\quad$
+		1+2+\dots+n+(n+1) = \dfrac{n(n+1)}{2}+(n+1) = (n+1)\left(\dfrac{n}{2}+1\right) = \dfrac{(n+1)(n+2)}{2} 
+	$
+	
+	\medskip
+	\quad{\it Доказано}
+	
+	\vspace{-3mm}
+	\line(1,0){520}
+	
+	$
+	(1+2+\dots+n)^2+(n+1)^3 = \left(\dfrac{n(n+1)}{2}\right)^2+(n+1)^3 = (n+1)^2\left(\dfrac{n^2}{4}+(n+1)\right) = 
+	$
+	
+	$
+	\dfrac{(n+1)^2(n+2)^2}{4} = \left(\dfrac{(n+1)(n+2)}{2}\right)^2 = (1+2+\dots+n+(n+1))^2
+	$
+	
+	\smallskip
+	\quad{\it Доказано}\medskip
+	
+	{\bf 1.3} ({\it Бином Ньютона})
+	
+	{\it (а)}  $\bullet$ Докажите, что данное $\forall n\in N;$ $a,b\in R$ выполнено равенство:
+	
+	\[
+		(a+b)^n = \sum_{k=0}^{n}C_n^k a^k b^{n-k},
+	\]
+	
+	где $C_n^k = \dfrac{n!}{k!(n-k)!}$ - {\it биноминальный коэффициент}
+	\smallskip
+	
+	\underline{\bf Замечание:} Биноминальные коэффициенты легко получаются из {\it трегольника Паскаля}. В этом треугольнике на вершине и по бокам стоят единицы. Каждое число равно сумме двух, расположенных над ним чисел. Продолжать теугольник можно бесконечно.\vspace{2mm}
+	
+	{\it (б)} $\ast$ Сформулируйте и докажите бином Ньютона для {\bf отрицательных} целых n.
+	
+	\hspace{-2mm} Доказательство:
+	
+	1) Докажем, что данное утверждение верно при $n=1$
+	
+	\quad$
+		(a+b)^1 = a+b \equiv \sum_{k=0}^{1}C_1^k a^k b^{1-k} = C_0^1 a^0 b^1+ C_1^1 a^1 b^0 = a+b
+	$
+	\vspace{2mm}
+	
+	2) Предположим, что данное утверждение верно при n, то оно верно при $n+1$\medskip
+	
+	$
+		(a+b)^{n+1} = (a+b)(a+b)^n = (a+b)\sum_{k=0}^{n}C_n^k a^k b^{n-k} = (a+b)(C_n^0 a^0 b^{n}+C_n^1 a^1b^{n-1}+\dots+C_n^n a^nb^0)=
+	$
+	
+	$
+	C_n^0a^1b^n+C_n^1a^2b^{n-1}+C_n^2a^3b^{n-2}+\dots C_n^{n-1}a^nb^1+C_n^na^{n+1}b^0 +C_n^0b^{n+1}+ C_n^1ab^{n}+\dots +C_n^{n-1}a^{n-1}b^2+C_n^na^nb=
+	$
+	
+	\line(1,0){520}
+	\vspace{2mm}
+	
+	\quadВ доказательстве используем данные утверждения:
+	
+	1) $C_n^0 = \dfrac{n!}{0!(n-0)!} = \dfrac{n!}{n!} = 1$
+	
+	2) $C_n^1 = \dfrac{n!}{1!(n-1)!} = \dfrac{n!}{(n-1)!} = n$
+	
+	3) $C_n^{n-1} = \dfrac{n!}{(n-1)!(n-(n-1))!} = \dfrac{n!}{(n-1)!} = n$\vspace{1mm}
+	
+	4) $C_n^m = C_n^{n-m}$\vspace{1mm}
+	
+	5) $C_n^{k-1}+C_n^k = \dfrac{n!}{(k-1)!(n-k+1)!} + \dfrac{n!}{k!(n-k)!} = \dfrac{n!}{(k-1)!(n-k)!}\left(\dfrac{1}{n-k+1}+\dfrac{1}{k}\right) = $
+	
+	$
+	\dfrac{n!(k+n-k+1)}{k(k-1)!(n-k)!(n-k+1)} = \dfrac{n!(n+1)}{k!(n-k+1)!} = \dfrac{(n+1)!}{k!(n+1-k)!} = C_{n+1}^k
+	$\vspace{2mm}
+	
+	\line(1,0){520}
+	
+	$   C_n^0b^{n+1}+ ab^n(C_n^0+C_n^1)+a^2b^{n-1}(C_n^1+C_n^2)+a^3b^{n-2}(C_n^2+C_n^3)+\dots+ a^{n-1}b^2(C_n^{n-2}+C_n^{n-1})+ a^nb(C_n^{n-1}+C_n^n) + C_n^na^{n+1} = C_{n+1}^0b^{n+1}+ ab^nC_{n+1}^1+\dots+a^{n-1}b^2C_{n+1}^{n-1}+ a^nbC_{n+1}^{n}+C_{n+1}^{n+1}a^{n+1} = \sum_{k=0}^{n+1}C_n^ka^kb^{n-k}
+	$
+	
+	\vspace{2mm}
+	{\it Доказано}\medskip
+	
+	{\bf 1.4.} ({\it неравенство Бернулли})
+	
+	Пусть $x_i\cdot x_j \ge 0,$ $x_i>-1$, для всех $i,j = 1,\dots, n$. Докажите, что
+	
+	\[
+		(1+x_1)\cdot(1+x_2)\cdot\dots\cdot(1+x_n) \ge 1+x_1+x_2+\dots+x_n
+	\]
+	
+	\hspace{-2mm} Доказательство:
+	\vspace{1mm}
+	
+	1) Докажем, что данное утверждение верно при $n=1$
+	
+	\quad$
+		(1+x_1) = 1+x_1 \ge 1+x_1
+	$
+	
+	2) Предположим, что данное неравенство верно при n, докажем для $n+1$
+	\vspace{2mm}
+	
+	$
+	(1+x_1)\cdot(1+x_2)\cdot\dots\cdot(1+x_n)\cdot(1+x_{n+1}) \ge (1+x_1+x_2+\dots+x_n)\cdot(1+x_{n+1}) = 1+x_1+x_2+\dots+x_n+
+	$
+	
+	$
+		x_{n+1}+x_1\cdot x_{n+1}+x_2\cdot x_{n+1}+\dots+ x_n\cdot x_{n+1} \ge 1+x_1+x_2+\dots+x_n+x_{n+1}
+	$
+	
+	\vspace{2mm}
+	
+	{\it Доказано}
+	\medskip
+	
+	{\bf 1.5.} $\bullet$ Пусть $x_1,\dots, x_n$ - строго положительные числа, такие что $x_1\cdot x_2\cdot\dots\cdot x_n = 1$. Докажите, что $x_1+x_2+\dots+x_n\ge n$.
+	
+	
+	\medskip
+	{\bf 1.6.}\label{1.6.} Пусть $n\in N$ и $n\ge 2$. Докажите, что
+	\vspace{2mm}
+	
+	\quad a) $\dfrac{1}{n!} \le \dfrac{1}{2^{n-1}}$ \hspace{35mm} b) $\bullet$\quad$2< \left(1+\dfrac{1}{n}\right)^n < 3$ ({\itнеравенство числа e}). 
+	
+	\medskip
+	Доказательство
+	
+	a)
+	
+	1) Докажем, что данное утвеждение верно при $n=2$
+	
+	\qquad$
+	\dfrac{1}{2!} = \dfrac{1}{2} \le \dfrac{1}{2^{2-1}} = \dfrac{1}{2^1} = \dfrac{1}{2}
+	$\medskip
+	
+	2) Предположим, что данное утверждение верно при n, докажем для $n+1$
+	\vspace{2mm}
+	
+	$
+	\dfrac{1}{(n+1)!} \le \dfrac{1}{(n+1)\cdot2^{n-1}} \text{ \quad(При n>1 верно, поэтому }\dfrac{1}{(n+1)}\le \dfrac{1}{2}\text{)} \vspace{1mm}\quad \le \dfrac{1}{2^n}
+	$
+	
+	\vspace{2mm}
+	
+	{\it Доказано}
+	\medskip
+	
+	b) 
+	
+	1) Предположим, что данное утверждение верно при $n=2$
+	\vspace{2mm}
+	
+	$
+	2<\left(1+\dfrac{1}{2}\right)^2 = \left(\dfrac{3}{2}\right)^2 = \dfrac{9}{4}<3
+	$
+	\vspace{2mm}
+	
+	2) Предположим, что утверждение ($\left(1+\dfrac{1}{n}\right)^n>2$) верно при n, докажем для $n-1$
+	\vspace{2mm}
+	
+	
+	\medskip
+	{\bf 1.7.} {\it (a)} $\bullet$ Докажите, используя метод математической индукции, что
+	
+	\begin{center}$
+		1+\dfrac{1}{2}+\dfrac{1}{4}+\dots+ \dfrac{1}{2^n} <2 , \text{ для } \forall n \in N
+	$\end{center}
+
+	{\it (б)} Докажите данное неравенство без использования метода математической индукции.
+	
+	{\it (в)} Усильте неравенство из пункта (а)б доказав равенство
+	
+	\begin{center}
+		$
+			1+\dfrac{1}{2}+\dfrac{1}{4}+\dots+\dfrac{1}{2^n} = 2-\dfrac{1}{2^n}
+		$
+	\end{center}
+
+	Доказательство
+	
+	а)
+	1) Докажем, что данное утверждение верно при $n=1$\vspace{2mm}
+	
+	
+	\qquad$
+	 1+\dfrac{1}{2} = \dfrac{3}{2}<2
+	$\vspace{2mm}
+	
+	2) Предположим, что данное утверждение верно при $n$, то оно верно при $n-1$\vspace{2mm}
+	
+	\qquad
+	$
+	1+\dfrac{1}{2}+\dfrac{1}{2^2}+\dots+\dfrac{1}{2^{n-2}}+\dfrac{1}{2^{n-1}} < 2- \dfrac{1}{2^n} < 2
+	$\medskip
+	
+	{\itДоказано}\medskip
+	
+	
+	б,в)
+	\qquad$a_1 = 1$, $a_2 = \dfrac{1}{2}$, $\dots$, $a_{n+1} = \dfrac{1}{2^n} $, $d = \dfrac{1}{2}$
+	\medskip
+	
+	$	S_{n+1} = \dfrac{a_1(1-d^{n+1})}{1-d} = \dfrac{1- \frac{1}{2^{n+1}}}{1-\frac{1}{2}} = 2\cdot\dfrac{2^{n+1}-1}{2^{n+1}} = \dfrac{2^{n+1}-1}{2^n} = 2 - \dfrac{1}{2^n} <2$
+	
+	\vspace{2mm}{\it Доказано}
+	
+	\medskip
+	{\bf 1.9} $\bullet$ Докажите, что $1+\dfrac{1}{4}+\dfrac{1}{9} +\dots+\dfrac{1}{n^2}<2$ для $\forall n\in N$.
+	\medskip
+	
+	1) Докажем, что данное утверждение верно при $n=1$
+	
+	\quad$
+		1<2
+	$\vspace{2mm}
+	
+	2) Предположим, что данное утверждение верно при n, то оно верно при $n-1$\vspace{2mm}
+	
+	\hspace{5mm}$
+		1+\dfrac{1}{4}+\dfrac{1}{9}+\dots+\dfrac{1}{(n-2)^2}+\dfrac{1}{(n-1)^2} < 2-\dfrac{1}{n^2} <2
+	$
+	
+	\medskip
+	{\bf 1.10.} {\it(неравенства между "обыкновенными средними")}\medskip
+	
+	Пусть $a_i \in R$, $a_i>0$, $\forall i=1,\dots,n$. Обозначим
+	\medskip
+	
+	\quad$A_n =\dfrac{a_1+a_2+\dots+a_n}{n}$ , \quad $G_n = \sqrt[n]{a_1\cdot a_2\cdot\dots\cdot a_n}$, \quad $\text{Г}_n=\dfrac{n}{\frac{1}{a_1}+\frac{1}{a_2}+\dots+\frac{1}{a_n}}$
+	
+	\medskip Докажите, что $A_n \ge G_n \ge \text{Г}_n$ для $\forall n\in N$, $n\ge 2$\medskip
+	
+	\underline{\bf Замечание:} Выражения $A_n$ называется {\it средним арифметическим,} $G_n$ - {\it средним геометрическим}, $\text{Г}_n$ - {\it средним гармоническим} чисел $a_1,a_2,\dots,a_n$.
+	
+	\underline{\bf Замечание:} Отметим, что равенство в данных неравенствах возможно тогда и только тогда, когда выполнено: $a_1=a_2=\dots=a_n$. 
+	
+	\vspace{2mm} Доказательство
+	
+	1) Докажем первую часть данного сложного неравентсва при $n=2$\medskip
+	
+	\quad$
+	\dfrac{a_1+a_2}{2} \ge \sqrt{a_1\cdot a_2}
+	$
+	\vspace{2mm}
+	
+	$a_1^2+2a_1a_2+a_2^2 \ge 4a_1a_2$ \quad$\Longleftrightarrow$\quad $a_1^2-2a_1a_2+a_2^2\ge0$\quad$\Longleftrightarrow$\quad $(a_1-a_2)^2\ge0$\medskip
+	
+	$\sqrt{a_1a_2}\ge \dfrac{2}{\frac{1}{a_1}+\frac{1}{a_2}} = \dfrac{2a_1a_2}{a_1+a_2}$\quad$\Longleftrightarrow$\quad $(a_1a_2)(a_1+a_2)^2 \ge (4a_1^2a_2^2)$\quad$\Longleftrightarrow$\quad $a_1^2+2a_1a_2+a_2^2 \ge 4a_1a_2$\vspace{1mm}
+	
+	$\Longleftrightarrow$\quad$a_1^2-2a_1a_2+a_2^2\ge 0$\quad$\Longleftrightarrow$\quad $(a_1-a_2)^2 \ge 0$
+	
+	\line(1,0){520}
+	
+	{\it 1)} Докажите неравенство для $n=4$\medskip
+	
+	Доказательство
+	\medskip
+	
+	В доказательстве мы используем Неравенство Коши (Данную теорему для двух переменных)
+	
+	\begin{eqnarray*}
+		\dfrac{a_1+a_2+a_3+a_4}{4} = \dfrac{\frac{a_1+a_2}{2}+\frac{a_3+a_4}{2}}{2} \ge \dfrac{\sqrt{a_1a_2}+\sqrt{a_3a_4}}{2} \ge \sqrt{\sqrt{a_1a_2}\cdot\sqrt{a_3a_4}} = \sqrt[4]{a_1a_2a_3a_4}
+	\end{eqnarray*}
+	
+	2) Докажите неравенство для $n=2m$, предположив что оно верно для $n=m$
+	
+	Так как мы предположили что данное неавенство верно при $n=m$, а доказательство базы находится сверху, то приступим сразу ко второму шагу математической индукции.
+	
+	\begin{eqnarray*}
+		\dfrac{a_1+a_2+\dots+a_{2m-1}a_{2m}}{2m} = \dfrac{\frac{a_1+a_2}{2}+\frac{a_3+a_4}{2}+\dots+\frac{a_{2m-1}+a_{2m}}{2}}{m}\ge \dfrac{\sqrt{a_1a_2}+\sqrt{a_3a_4}+\dots+\sqrt{a_{2m-1}a_{2m}}}{m} \ge\\
+		\sqrt[m]{\sqrt{a_1a_2}\cdot\sqrt{a_3a_4}\dots \sqrt{a_{2m-3}a_{2m-2}} \sqrt{a_{2m-1}a_{2m}}} = (a_1a_2a_3\dots a_{2m-1}a_{2m})^{\frac{1}{2m}} = \sqrt[2m]{a_1a_2a_3\cdot\dots\cdot a_{2m-1}a_{2m}}
+	\end{eqnarray*}
+	
+	{\it Доказано}
+	
+	\medskip
+	
+	3) Докажем неравенство для $n=2^k$
+	
+	\begin{eqnarray*}
+		\dfrac{a_1+a_2+\dots+a_{2^k}}{2^{k}} = \dfrac{\dfrac{a_1+a_2+\dots+a_{2^{k-1}}}{2^{k-1}}+\dfrac{a_{2^{k-1}+1}+\dots+a_{2^k}}{2^{k-1}}}{2}\ge \dfrac{\sqrt[2^{k-1}]{a_1a_2\dots a_{2^{k-1}}} + \sqrt[2^{k-1}]{a_{2^{k-1}+1}\dots a_{2^k}}}{2} \ge \\
+		\sqrt{\sqrt[2^{k-1}]{a_1a_2\dots a_{2^{k-1}}}\cdot\sqrt[2^{k-1}]{a_{2^{k-1}+1}\dots a_{2^k}}} = \sqrt{\sqrt[2^{k-1}]{a_1a_2\dots a_{2^{k-1}}\cdot a_{2^{k-1}+1}\dots a_{2^k}}} = \sqrt[2^{k}]{a_1a_2\cdot\dots\cdot a_{2^{k-1}}\cdot\dots\cdot a_{2^k}}
+	\end{eqnarray*}
+	
+	{\it Доказано}
+	
+	\medskip
+	
+	4) Докажем неравенство для $n<2^k$
+	
+	Таким образом, если мы имеем n членов, то обозначим их среднее арифметическое через k, поэтому расширим список значений.
+	\medskip
+	
+	$a_{n+1} = a_{n+2}=\dots=a_m = k$ 
+	
+	Тогда мы имеем:\medskip
+	
+	$k = \dfrac{a_1+a_2+\dots+a_n}{n}$\medskip
+	
+	$\dfrac{a_1+a_2+\dots+a_n}{n} = \dfrac{\frac{m}{n}(a_1+a_2+\dots+a_n)}{m} = \dfrac{a_1+a_2+\dots+a_n+\frac{m-n}{n}(a_1+a_2+\dots+a_n)}{m} = $
+	\medskip
+	
+	$
+	\dfrac{a_1+a_2+\dots+a_n+(m-n)k}{m} = \dfrac{a_1+a_2+\dots+a_n+a_{n+1}+\dots+a_m}{m} >\sqrt[m]{a_1a_2\dots a_n a_{n+1}\dots a_m} =
+	$\medskip
+	
+	$
+		\sqrt[m]{a_1a_2\dots a_n \cdot k^{m-n}}
+	$, \hspace{2mm}поэтому $a^m > a_1a_2\dots a_n k^{m-n}$\hspace{2mm} и\hspace{2mm} $a>\sqrt[n]{a_1a_2\dots a_n}$
+	
+	\medskip
+	{\it Доказано}
+	
+	\medskip
+	\line(1,0){520}
+	
+	2) Докажем вторую часть данного неравенства при $n=2$
+	\medskip
+	
+	\hspace{5mm}$
+	\sqrt{a_1\cdot a_2} \ge \dfrac{2}{\frac{1}{a_1}+\frac{1}{a_2}} 
+	$
+	\medskip
+	
+	Немного преобразуем Неравенство Коши:\vspace{2mm}
+	
+	\quad$\dfrac{a_1+a_2}{2}\ge \sqrt{a_1a_2}$\quad $\Longleftrightarrow$\quad $\dfrac{1}{(a_1+a_2)/2} \le \dfrac{1}{\sqrt{a_1a_2}}$\quad$\Longleftrightarrow$\quad$\dfrac{2}{a_1+a_2}\le \dfrac{1}{\sqrt{a_1a_2}}$
+	
+	\medskip
+	
+	\quad$
+	\dfrac{2}{\frac{1}{a_1}+\frac{1}{a_2}} = \dfrac{2a_1a_2}{a_1+a_2} \le \dfrac{a_1a_2}{\sqrt{a_1a_2}} = \sqrt{a_1a_2}
+	$
+	\medskip
+	
+	Докажем $G_n\ge \text{Г}_n$ с помощью небольшого преобразования:\medskip
+	
+	$b_1=\dfrac{1}{a_1}$, $b_2=\dfrac{1}{a_2}$ ... $b_n=\dfrac{1}{a_n}$\medskip
+	
+	$\dfrac{n}{\frac{1}{a_1}+\frac{n}{a_2}+\dots+\frac{1}{a_n}} = \dfrac{n}{b_1+b_2+\dots+b_n} \le \dfrac{1}{\sqrt[n]{b_1b_2\dots b_n}} = \sqrt[n]{a_1a_2\dots a_n}$
+	
+	\medskip
+	\quad{\it Доказано}
+	
+	\medskip
+	{\bf 1.11.} {\it(8)} Пусть $n\in N$, $n\ge 2$. Докажите, что $n! < \left(\dfrac{n+1}{2}\right)^n$.\vspace{2mm}
+	
+	Доказательство
+	\medskip
+	
+	1) Докажем, что данное утверждение верно при $n=2$
+	
+	\quad$
+		2! = 2 < \left(\dfrac{2+1}{2}\right)^2 = \left(\dfrac{3}{2}\right)^2 = \dfrac{9}{4}
+	$\smallskip
+	
+	2) Предположим, что данное утверждение верно при n, то оно верно при $n+1$
+	
+	$
+		(n+1)! < (n+1)\left(\dfrac{n+1}{2}\right)^n = \dfrac{(n+1)^{n+1}}{2^n} = 2\cdot\left(\dfrac{n+1}{2}\right)^{n+1}
+	$
+	\begin{eqnarray*}
+		2\cdot\left(\dfrac{n+1}{2}\right)^{n+1} \vee& \text{ } \left(\dfrac{n+2}{2}\right)^{n+1}\\
+		2\cdot(n+1)^{n+1}\text{ }  \vee& (n+2)^{n+1} \\
+		2 \text{ } \vee& \left(\dfrac{n+2}{n+1}\right)^{n+1} \\
+		2\text{ } <& \left(1+\dfrac{1}{n+1}\right)^{n+1}
+	\end{eqnarray*}
+	
+	Это верно из упражнения \hyperref[1.6.]{1.6.}
+	
+	
+	
+	\medskip
+	{\bf1.12.} {\it(7)} Докажите, что если $x>-1$, то справедливо неравенство
+	
+	\begin{center}
+		$(1+x)^n\ge 1+nx,$ ($n\in N,$ $n>1$)
+	\end{center}
+	
+	причем знак равенства имеет место лишь при $x=0$
+	
+	\medskip
+	Доказательство
+	
+	1) Докажем, что данное утверждение верно при $n=2$
+	\vspace{-1mm}
+	\begin{eqnarray*}
+		(1+x)^2 = 1+2x+x^2 \ge& 1+2x \\
+		x^2 \ge& \hspace{-9mm}0
+	\end{eqnarray*}
+	
+	2) Предположим, что данное утверждение верно при n, то оно верно при $n+1$
+	\medskip
+	
+	$
+	(1+x)^{n+1} \ge (1+nx)(1+x) = 1+x+nx+nx^2 = 1+(n+1)x+nx^2 \ge 1+(n+1)x
+	$	
+	
+	\vspace{2mm}
+	\quad{\it Доказано}
+	
+	{\bf 1.13.} {\it(9)} Докажите следующие неравенства: 
+	\vspace{2mm}
+	
+	{\it (a)} $2!\cdot4!\cdot\dots\cdot(2n)! > [(n+1)!]^n$ при $n\in N$, $n>1$\vspace{2mm}
+	
+	{\it (б)} $\dfrac{1}{2}\cdot\dfrac{3}{4}\cdot\dots\cdot\dfrac{2n-1}{2n} < \dfrac{1}{\sqrt{2n+1}}$ при $n\in N$
+	
+	\medskip
+	Доказательство
+	
+	а) 1) Докажем, что данное утверждение верно при $n=2$
+	\vspace{2mm}
+	
+	\quad$
+	2!\cdot4! = 2\cdot2\cdot3\cdot4 = 48 > [(2+1)!]^2 = [(3)!]^2 = (6)^2 = 36
+	$
+	
+	\vspace{2mm}
+	2) Предположим, что данное утверждение верно при n, то оно верно при $n+1$
+	\medskip
+	
+	$
+	2!\cdot4!\cdot\dots\cdot(2n)!\cdot(2n+2)! > [(n+1)!]^n\cdot(2n+2)!
+	$
+	\begin{eqnarray*}
+		[(n+1)!]^n \cdot(2n+2)! \quad\vee& [(n+2)!]^{n+1} \\
+		\dfrac{(2n+2)!}{(n+2)!} \quad\vee& \left(\dfrac{(n+2)!}{(n+1)!}\right)^n \\
+		\dfrac{(2n+2)!}{(n+2)!}\quad \vee& \hspace{-5mm}(n+2)^n \\
+		\underbrace{(n+3)\cdot(n+4)\cdot\dots\cdot(2n+2)}_{n} \quad>& \underbrace{(n+2\dots(n+2)}_{n}	
+	\end{eqnarray*}
+	
+	\hspace{10mm}$
+		[(n+1)!]^n(2n+2)! > [(n+2)!]^{n+1}
+	$
+	
+	\medskip
+	{\it Доказано}
+	
+	\medskip
+	б) 1) Докажем, что данное утверждение  верно при $n=1$
+	\vspace{2mm}
+	
+	\quad$
+		\dfrac{1}{2} = \dfrac{1}{\sqrt{4}} < \dfrac{1}{\sqrt{1+2}} = \dfrac{1}{\sqrt{3}}
+	$\vspace{2mm}
+	
+	2) Предположим, что данное утверждение верно при n, то оно верно при $n+1$\medskip
+	
+	\qquad$
+	\dfrac{1}{2}\cdot\dfrac{3}{4}\dots\dfrac{2n-1}{2n}\cdot\dfrac{2n+1}{2n+2} < \dfrac{1}{\sqrt{2n+1}}\cdot\dfrac{2n+1}{2n+2}
+	$
+	
+	\begin{eqnarray*}
+		\dfrac{2n+1}{(2n+2)\sqrt{2n+1}}\quad \vee& \dfrac{1}{\sqrt{2n+3}} \\
+		\left(\dfrac{2n+1}{2n+2}\right)^2\quad \vee& \dfrac{2n+1}{2n+3} \\
+		(2n+1)(2n+3) \quad \vee& (2n+2)^2 \\
+		4b^2+6n+2n+3 \quad \vee& 4n^2+8n +4 \\
+		3 \quad <& \hspace{-17mm}4
+	\end{eqnarray*}
+	
+	\qquad$
+	\dfrac{1}{\sqrt{2n+1}}\cdot\dfrac{2n+1}{2n+2} < \dfrac{1}{\sqrt{2n+3}}
+	$
+	
+	\medskip
+	{\it Доказано}
+	
+	\medskip
+	{\bf 1.14.} Докажите, что для любых $x\in(0;2\pi)$ и $n\in N$ выполнется тождество:
+	
+	\begin{center}
+		$
+			\dfrac{1}{2} + \cos x+\cos 2x +\dots+ \cos nx = \dfrac{\sin\left(n+\dfrac{1}{2}\right)x}{2\sin\dfrac{x}{2}}
+		$
+	\end{center}
+	
+	Доказательство
+	
+	\medskip
+	
+	1) Докажем, что данное утвердение верно при $n=1$
+	\vspace{2mm}
+	
+	$
+	\dfrac{1}{2}+\cos x = \dfrac{\sin\dfrac{3x}{2}}{2\sin\dfrac{x}{2}}
+	$  \quad$\Longleftrightarrow$\quad $\sin\dfrac{x}{2} + 2\cos x\cdot\sin\dfrac{x}{2} = \sin\dfrac{3x}{2}$  \quad$\Longleftrightarrow$\quad $\sin\dfrac{x}{2} + \sin\dfrac{3x}{2} - \sin\dfrac{x}{2} = \sin\dfrac{3x}{2}$\medskip
+	
+	\quad$\sin\dfrac{x}{2} = \sin\dfrac{x}{2}$ \quad{\itДоказано}\medskip
+	
+	2) Предположим, что данное утверждение верно при n, то оно верно при $n+1$
+	\medskip
+	
+	$
+	\dfrac{1}{2}+\cos x+\cos 2x+\dots +\cos nx +\cos (n+1)x = \dfrac{\sin\left(n+\dfrac{1}{2}\right)x}{2\sin\dfrac{x}{2}} + \cos(n+1)x  =
+	$
+	
+	$
+	\dfrac{\sin\left(nx+\dfrac{x}{2}\right) + \cos(xn+x)\cdot2\sin\dfrac{x}{2}}{2\sin\dfrac{x}{2}} = \dfrac{\sin(nx+\dfrac{x}{2}) + \sin(nx+x+\dfrac{x}{2})-\sin(nx+x-\dfrac{x}{2})}{2\sin\dfrac{x}{2}} = 
+	$
+	
+	$
+	\dfrac{\sin(nx+\dfrac{x}{2})+ \sin(nx+\dfrac{3x}{2})-\sin(nx+\dfrac{x}{2})}{2\sin\dfrac{x}{2}} = \dfrac{\sin\left((n+1)+\dfrac{1}{2}\right)x}{2\sin\dfrac{x}{2}}
+	$
+	
+	\medskip
+	\qquad{\it Доказано}
+	
+	
+	\medskip
+	{\bf 1.15.} Докажите, что для $n\in N$ выполняется неравенство:
+	
+	\begin{center}
+		$
+		\sqrt{n+\sqrt{n-1+\sqrt{n-2+\dots+\sqrt{2+\sqrt{1}}}}} < \sqrt{n} +1 
+		$
+	\end{center}
+	
+	1) Докажем, что данное утверждение верно при $n=1$
+	\medskip
+	
+	\quad$\sqrt{1}<\sqrt{1}+1 = 1+ 1 =2$
+	\medskip
+	
+	2) Предположим, что данное утверждение верно при n, то оно верно при $n+1$
+	\medskip
+	
+	$
+	\sqrt{n+1+\sqrt{n+\sqrt{n-1+\dots+\sqrt{2+\sqrt{1}}}}} < \sqrt{n+1+\sqrt{n} +1}
+	$
+	
+	\begin{eqnarray*}
+		\sqrt{n+1+\sqrt{n}+1} \quad\vee& \sqrt{n+1}+1 \\
+		n+2+\sqrt{n} \quad \vee& n+1 + 2\sqrt{n+1}+1 \\
+		\sqrt{n} \quad <& \hspace{-10mm}2\sqrt{n+1}
+	\end{eqnarray*}
+	
+	\qquad$\sqrt{n+2+\sqrt{n}} < \sqrt{n+1}+1$
+	
+	\medskip
+	\quad{\it Доказано}
+	
+	
+	\medskip
+	{\bf1.16.} \textasteriskcentered\hspace{1mm} Пусть $k,n \in N$. Докажите, что $C_n^k\le \left(\dfrac{e\cdot n}{k}\right)^k$, где e - {\it основание натурального логарифма}.
+	
+	\vspace{2mm}
+	Доказательство
+	
+	1) Докажем данное неравенство для $n=2$\medskip
+	
+	\[
+		C_2^k = \dfrac{2!}{k!(2-k)!} = \dfrac{2}{k!(2-k)!} \le \left(\dfrac{e\cdot2}{k}\right)^k 
+	\]
+	
+	\qquad$\dfrac{2}{k!(2-k)!} \le \dfrac{2}{k!} \vee \left(\dfrac{2e}{k}\right)^k \le \dfrac{(2e)^k}{k!}$\quad$\Longleftrightarrow$\quad $2\le (2e)^k$ \qquad {\it Доказано}
+	
+	\medskip
+	2) Предположим, что данное неравенство верно для n, то оно верно для $n+1$\medskip
+	
+	\qquad$
+	C_{n+1}^k = \dfrac{(n+1)!}{k!(n+1-k)!} = \dfrac{n!}{(n-k)!k!}\cdot\dfrac{n+1}{n+1-k}\le \left(\dfrac{e\cdot n}{k}\right)^k\cdot\dfrac{n+1}{n+1-k} = \dfrac{e^k n^k(n+1)}{k^k(n+1-k)}
+	$
+	
+	\medskip
+	{\bf1.19.} \textasteriskcentered\hspace{1mm} Пусть $p\ge1$ - произвольное действительное число. Докажите, что для любых неотрицательных $a_1,a_2\dots a_n$ справедливо неравенство
+	
+	\[
+		a_1^p+a_2^p+\dots+a_n^p \le (a_1+a_2+\dots+a_n)^p
+	\]
+	
+	Доказательство 
+	
+	\medskip
+	
+	1) Докажем данное неравенство для $n=2$\medskip
+	
+	$a_1^p+a_2^p \le (a_1+a_2)^p = a_1^p+ C_p^1a_1^{p-1}a_2+\dots+ a_2^p$\quad$\Longleftrightarrow$\quad $C_p^1a_1^{p-1}a_2+C_p^2a_2^2a_2^{p-2}+\dots+C_p^{p-1}a_1^{p-1}a_2\ge 0$
+	
+	\medskip
+	2) Предположим, что данное неравенство верно при $n$, то оно верно при $n+1$\medskip
+	
+	$
+		a_1^p+a_2^p+\dots+a_n^p + a_{n+1}^p \le (a_1+a_2+\dots+a_n)^p + a_{n+1}^p \le (a_1+a_2+\dots+a_n)^p+C_n^1 a_{n+1}(a_1+\dots+a_n)^p+
+	$
+	
+	$
+	C_n^2 a_{n+1}^2(a_1+\dots+a_n)^{p-1}+\dots+ C_n^{p-1}a_{n+1}^{p-1}(a_1+\dots+a_n)+a_{n+1}^p\le (a_1+a_2+\dots+a_n+a_{n+1})^p
+	$
+	
+	\medskip
+	\quad{\it Доказано}
+	\newpage
+	
+	{\bf Неравенство Коши-Буняковского-Шварца (КБШ).} Для произвольных вещественных чисел $x_i, y_j$ докажите
+	
+	\[
+		(x_1^2+x_2^2+\dots+x_n^2)(y_1^2+y_2^2+\dots+y_n^2) \ge (x_1y_1+x_2y_2+\dots+x_ny_n)^2
+	\]
+	
+	1) Докажем, что данное утверждение верно при $n=1$
+	\medskip
+	
+	\qquad$
+	x_1^2\cdot y_1^2 \ge (x_1y_1)^2 = x_1^2\cdot y_1^2
+	$
+	
+	\medskip
+	
+	2) Предположим, что данное неравенство верно при n, докажем что данное неравенство верно при $n+1$
+	
+	\medskip
+	
+	$
+	(x_1y_1+\dots+x_ny_n+x_{n+1}y_{n+1})^2 = (x_1y_1+\dots+x_ny_n)^2+2(x_1y_1+\dots+x_ny_n)x_{n+1}y_{n+1}+x_{n+1}^2y_{n+1}^2 \le
+	$
+	
+	\vspace{2mm}
+	$
+	(x_1^2+\dots+x_n^2)(y_1^2+\dots+y_n^2)+x_{n+1}^2y_{n+1}^2+2(x_1y_1+\dots+x_ny_n)x_{n+1}y_{n+1}
+	$
+	\vspace{2mm}
+	
+	Преобразуем левую часть неравенства при $n+1$
+	\vspace{2mm}
+	
+	$
+	((x_1^2+\dots+x_n^2)+x_{n+1}^2)((y_1^2+\dots+y_n^2)+y_{n+1}^2) = (x_1^2+\dots+x_n^2)(y_1^2+\dots+y_n^2)+x_{n+1}^2(y_1^2+\dots+y_n^2) +
+	$\vspace{2mm}
+	
+	$
+	+y_{n+1}^2(x_1^2+\dots+x_n^2)+x_{n+1}^2y_{n+1}^2
+	$
+	
+	\vspace{2mm}
+	
+	Обозначим $A_n = (x_1^2+\dots+x_n^2)(y_1^2+\dots+y_n^2)$
+	\medskip
+	
+	Сравним:
+	\begin{eqnarray*}
+		\bcancel{A_n^2}++\bcancel{x_{n+1}^2y_{n+1}^2}+2(x_1y_1+\dots+x_ny_n)x_{n+1}y_{n+1}\quad \vee& \bcancel{A_n^2}+\bcancel{x_{n+1}^2y_{n+1}^2}+x_{n+1}^2(y_1^2+\dots+y_n^2)+y_{n+1}^2(x_1^2+\dots+x_n^2) \\
+		2(x_1y_1+\dots+x_ny_n)x_{n+1}y_{n+1} \quad\vee&  \hspace{-31mm}x_{n+1}^2(y_1^2+\dots+y_n^2)+y_{n+1}^2(x_1^2+\dots+x_n^2) 
+	\end{eqnarray*}
+	
+	Перенесем левую часть в правую
+	
+	\medskip
+	$
+	x_{n+1}^2y_1^2-2x_1y_1x_{n+1}y_{n+1}+y_{n+1}^2x_1^2 + x_{n+1}^2y_2^2-2x_2y_2x_{n+1}y_{n+1}+y_{n+1}^2x_2^2+\dots+x_{n+1}^2y_n^2-2x_ny_nx_{n+1}y_{n+1}+y_{n+1}^2x_n^2 = (x_{n+1}y_1-y_{
+	n+1}x_1)^2+(x_{n+1}y_2-y_{n+1}x_2)^2+\dots+(x_{n+1}y_n-y_{n+1}x_n)^2 \ge 0
+	$
+	
+	\medskip
+	\qquad{\it Доказано}
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
