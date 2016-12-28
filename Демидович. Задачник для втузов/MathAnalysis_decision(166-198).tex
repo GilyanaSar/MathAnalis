@@ -1,0 +1,398 @@
+\documentclass[12pt]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cancel}
+
+%\usepackage[leqno]{amsmath}
+\pagestyle{empty}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% Цвета для гиперссылок
+\definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
+\definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
+
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\usepackage{tikz}
+\usepackage{chngcntr}
+
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+
+
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+\vspace{5mm}
+
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+
+\parskip=1pt %интервал между абзацами
+\oddsidemargin=-1.3cm %отступ от правого края
+\topmargin=-2.5cm %отступ от верхнего края
+\textwidth=18.5cm %Ширина текста
+\textheight=24cm
+
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\renewcommand{\baselinestretch}{1.25}%Расстояние между строками
+
+
+\begin{document}
+	
+	\begin{center}
+		{\bf \S3. Пределы}
+	\end{center}
+	
+	$1^{\circ}$. {\tt Предел последовательности}. Число $a$ называется {\it пределом последовательности} $x_1, x_2, \dots, x_n,\dots$:
+	\[
+		\lim\limits_{n\to\infty} x_n = a.
+	\]
+	если для любого $\varepsilon >0$ существует число $N=N(\varepsilon)$ такое, что
+	\[
+		|x_n-a| < \varepsilon \text{ при } n>N.
+	\]
+	
+	{\tt Пример 1.} Показать, что
+	\[
+		\lim\limits_{n\to\infty} \dfrac{2n+1}{n+1} = 2 \tag{1}\label{p:1}
+	\]
+	
+	{\tt Решение.} Составим разность
+	\[
+		\dfrac{2n+1}{n+1} -2 = -\dfrac{1}{n+1}
+	\]
+	Оценивая эту разность по абсолютной величине, будем иметь:
+	\[
+		\left|\dfrac{2n+1}{n+1}-2\right| = \dfrac{1}{n+1} <\varepsilon. \tag{2}\label{p:2}
+	\]
+	
+	если 
+	\[
+		n>\dfrac{1}{\varepsilon} - 1 =N(\varepsilon).
+	\]
+	Таким образом, для каждого положительного числа $\varepsilon$ найдется число $N+\dfrac{1}{\varepsilon} -1$ такое, что при $n>N$ будем иметь место неравенство (\ref{p:2}). Следовательно, число 2 является пределом последовательности $x_n = (2n+1)(n+1)$, т.е. справедлива формула (\ref{p:1}).
+	
+	$2^{\circ}$. {\tt Предел функции.} Говорят, что функция $f(x)\longrightarrow A$ при $x\longrightarrow a$ (A и a - числа), или
+	\[
+		\lim\limits_{x\to a} f(x) = A,
+	\]
+	если для любого $\varepsilon>0$ существует $\sigma = \sigma(\varepsilon)>0$ такое, что
+	\[
+		|f(x)-A| <\varepsilon \quad\text{ при }\quad 0<|x-a|<\sigma
+	\]
+	
+	Аналогично
+	\[
+		\lim\limits_{x\to \infty} f(x) = A.
+	\]
+	если $|f(x)-A|<\varepsilon$ при $|x|>N(\varepsilon)$.
+	
+	\qquad Употребляется также условная запись
+	\[
+		\lim\limits_{x\to a} f(x) = \infty,
+	\]
+	которая обозначает, что $|f(x)|>E$ при $0<|x-a|<\sigma(E)$, где E - произвольное положительное число.
+	
+	$3^{\circ}$. {\tt Односторонние пределы.} Если $x<a$ и $b\longrightarrow a$, то условно пишут $x\longrightarrow a-0$; аналогично, если $x>a$ и $x\longrightarrow a$, то это записывается так: $x\longrightarrow a+0$. Числа
+	\[
+		f(a-0) = \lim\limits_{x\to a-0} f(x) \quad \text{ и }\quad f(a+0) = \lim\limits_{x\to a+0} f(x)
+	\]
+	называется соответственно {\it пределом слева} функции f(x) в точке a и {\it пределом справа} функции f(x) в точке a (если эти числа существуют).
+	
+	Для существования предела функции f(x) при $x\longrightarrow a$ необходимо и достаточно, чтобы имело место равенство.
+	\[
+		f(a-0) = f(a+0)
+	\]
+	Если существует $\lim\limits_{x\to a} f_1(x)$ и $\lim\limits_{x\to a} f_2(x)$ то имеют место следующие теоремы: \vspace{2mm}
+	
+	1) $\lim\limits_{x\to a} [f_1(x)+f_2(x)] = \lim\limits_{x\to a} f_1(x)+\lim\limits_{x\to a}f_2(x);$\vspace{4mm}
+	
+	2) $\lim\limits_{x\to a}[f_1(x)\cdot f_2(x)] = \lim\limits_{x\to a}f_1(x)\cdot \lim\limits_{x\to a} f_2(x);$
+	
+	3) $\lim\limits_{x\to a}\dfrac{f_1(x)}{f_2(x)} = \dfrac{\lim\limits_{x\to a}f_1(x)}{\lim\limits_{x\to a} f_2(x)} \qquad (\lim\limits_{x\to a}f_2(x) \neq 0).$
+	
+	Частое применение находят следующие пределы:
+	\[
+		\lim\limits_{x\to 0}\dfrac{\sin(x)}{x} = 1
+	\]
+	\[
+		\lim\limits_{x\to \infty} \left(1+\dfrac{1}{x}\right)^x = \lim\limits_{a\to 0} \sqrt[a]{1+a} = e = 2,71828\dots
+	\]
+	
+	{\tt Пример 2.} Найти пределы справа и слева функции
+	\[
+		f(x) = \arctan\dfrac{1}{x}\quad\text{ при  } x\longrightarrow 0.
+	\]
+	
+	{\tt Решение.} Имеем:
+	\[
+		f(+0) = \lim\limits_{x\to+0}\left(\arctan\dfrac{1}{x}\right) = \dfrac{\pi}{2} \quad\text{ и }\quad f(-0) = \lim\limits_{x\to-0} \left(\arctan\dfrac{1}{x}\right) =-\dfrac{\pi}{2}
+	\]
+	
+	Предела же функции f(x) при $x\longrightarrow0$ в этом случае, очевидно, не существует.
+	\medskip
+	
+	{\bf 166.} Доказать, что при $n\longrightarrow \infty$ предел последовательности
+	\[
+		1\hspace{1mm},\hspace{2mm}\dfrac{1}{4}\hspace{1mm},\hspace{2mm}\dfrac{1}{9}\hspace{2mm},\dots,\hspace{1mm}\dfrac{1}{n^2},\dots
+	\]
+	равен нулю. Для каких значений n будем выполнено неравенство
+	\[
+		\dfrac{1}{n^2} < \varepsilon \qquad (\varepsilon - \text{произвольное положительное число})?
+	\]
+	
+	Произвести численный расчет, если 
+	
+	{\tt Решение:} a) $\varepsilon = 0.1$
+	
+	\qquad $\dfrac{1}{n^2} < 0.1$ $\longrightarrow$ $n>\sqrt{10} \hspace{2mm}$ $\Leftrightarrow$ $n\ge4$\medskip
+	
+	\quad б) $\varepsilon = 0.01$
+	
+	\qquad $\dfrac{1}{n^2}<0.01$ $\longrightarrow$ $n>\sqrt{100}$\hspace{2mm}$\Leftrightarrow$ $n>10$\medskip
+	
+	\quad в) $ \varepsilon = 0.001$
+	
+	\qquad $\dfrac{1}{n^2}<0.001$ $\longrightarrow$ $n>\sqrt{1000}$ \hspace{2mm} $\Leftrightarrow$ $n\ge 32$
+	\medskip
+	
+	{\bf 167.} Доказать, что предел последовательности
+	\[
+		x = \dfrac{n}{n+1}\qquad (n = 1,\hspace{1mm}2,\dots)
+	\]
+	при $n\longrightarrow\infty$ равен 1. При каких значениях $n>N$ будет выполнено неравенство
+	\[
+		|x_n-1| <\varepsilon\qquad (\varepsilon - \text{ произвольное положительное число})?
+	\]
+	Найти N, если 
+	
+	{\tt Решение:} Нужно доказать $\lim\limits_{n\to \infty} \dfrac{n}{n+1}=1$\medskip
+	
+	$|x_n - 1| <\varepsilon$ $\longrightarrow$ $\left|\dfrac{n}{n+1}-1\right|<\varepsilon$ $\longrightarrow$ $\left|\dfrac{n-n-1}{n+1}\right|<\varepsilon$ $\longrightarrow$ $\dfrac{1}{n+1}<\varepsilon$  $\longrightarrow$ 
+	
+	$n+1>\dfrac{1}{\varepsilon}$ $\longrightarrow$ $n > \dfrac{1}{\varepsilon}-1$
+	
+	\quad a) При $\varepsilon = 0.1$ получим $n>\dfrac{1}{\varepsilon}-1 = \dfrac{1}{0.1}-1 = 10-1 = 9$
+	
+	\quad б) При $\varepsilon = 0.01$ получим $n>\dfrac{1}{\varepsilon}-1 = \dfrac{1}{0.01}-1 = 100-1 = 99$
+	
+	\quad в) При $\varepsilon = 0.001$ получим $n>\dfrac{1}{\varepsilon}-1 = \dfrac{1}{0.001}-1 = 1000-1 = 999$
+	\medskip
+	
+	{\bf 168.} Доказать, что
+	\[
+		\lim\limits_{x\to 2} x^2 = 4
+	\]
+	Как подобрать для заданного положительного числа $\varepsilon$ какое-нибудь положительное число $\sigma$, чтобы из неравенства
+	\[
+		|x-2|<\sigma \quad\text{следовало неравентво }\quad |x^2-4|<\varepsilon
+	\]
+	Вычислить $\sigma$, если 
+	
+	{\tt Решение:} 
+	
+	$
+		|x^2-4| = |x^2-4x+4+4x-8| = |(|x-2|)^2+4|x-2|| = (|x-2|)^2+4|x-2|
+	$
+	
+	$
+		(|x-2|)^2+4|x-2|<\varepsilon
+	$
+	
+	$
+		(|x-2|)^2+4|x-2|-\varepsilon < \sigma^2+4\sigma-\varepsilon
+	$
+	
+	{\bf 171.} $\lim\limits_{n\to\infty} \left(\dfrac{1}{n^2}+\dfrac{2}{n^2}+\dfrac{3}{n^2}+\dots+\dfrac{n-1}{n^2}\right) = \lim\limits_{n\to \infty} \left(\dfrac{1+2+3+\dots+n-1}{n^2}\right)$
+	
+	$
+	1+2+3+\dots+n-1 = \dfrac{1+n-1}{2}\cdot(n-1) = \dfrac{n(n-1)}{2}
+	$
+	
+	$
+	\lim\limits_{n\to \infty} \dfrac{n(n-1)}{2n^2} = \lim\limits_{n\to\infty} \dfrac{n-1}{2n} = \lim\limits_{n\to\infty} \dfrac{1}{2} - \lim\limits_{n\to\infty}\dfrac{1}{2n} = \dfrac{1}{2} - 0 = \dfrac{1}{2}
+	$
+	
+	\medskip
+	{\bf 172.} $\lim\limits_{n\to\infty}\dfrac{(n+1)(n+2)(n+3)}{n^3} = \lim\limits_{n\to\infty} \dfrac{n^3+6n^2+11n+6}{n^3} = 1$
+	
+	\medskip
+	{\bf 173.} $\lim\limits_{n\to\infty} \left[\dfrac{1+3+5+7+\dots+(2n-1)}{n+1} - \dfrac{2n+1}{2}\right]$
+	
+	\medskip
+	$1+3+5+\dots+(2n-1) = \dfrac{1+2n-1}{2}\cdot n = n^2$
+	
+	$\dfrac{n^2}{n+1}-\dfrac{2n+1}{2} = \dfrac{2n^2-(2n+1)(n+1)}{2(n+1)} = \dfrac{2n^2-(2n^2+3n+1)}{2(n+1)} = \dfrac{-3n-1}{2(n+1)}$
+	
+	$
+	\lim\limits_{n\to\infty} \dfrac{-3n-1}{2n+2} = -1.5
+	$
+	
+	\medskip
+	{\bf 175.} $\lim\limits_{n\to\infty} \dfrac{2^{n+1}+3^{n+1}}{2^n+3^n} =\lim\limits_{n\to\infty} \dfrac{2^n\cdot2+3^n\cdot3}{2^n+3^n} = \lim\limits_{n\to\infty} \dfrac{\left(\frac{2}{3}\right)^{n+1}+1}{\left(\frac{2}{3}\right)^n\frac{1}{3}+\frac{1}{3}} = \lim\limits_{n\to\infty} \dfrac{1}{1/3} = 3$
+	
+	\line(1,0){520}\vspace{2mm}
+	
+	Докажем, что $\lim\limits_{n\to \infty} \left(\dfrac{2}{3}\right)^n =0$\medskip
+	
+	$|x_n-a|<\varepsilon$ $\longrightarrow$ $\left(\dfrac{2}{3}\right)^n < \varepsilon$ $\longrightarrow$ $\left(\dfrac{3}{2}\right)^n > \dfrac{1}{\varepsilon}$ $\longrightarrow$ $n>\log_{3/2} \dfrac{1}{\varepsilon} = N(\varepsilon)$
+	
+	\line(1,0){520}
+	
+	
+	\medskip
+	{\bf 176.} $\lim\limits_{n\to\infty}\left(\dfrac{1}{2}+\dfrac{1}{4}+\dfrac{1}{8}+\dots+\dfrac{1}{2^n}\right) = \lim\limits_{n\to\infty}\left(\dfrac{2^{n-1}+2^{n-2}+\dots+1}{2^n}\right)$
+	
+	$1+2+\dots+2^{n-2}+2^{n-1} = \dfrac{b_1(q^{n}-1)}{q-1} = \dfrac{2^{n}-1}{2-1} = 2^{n}-1$
+	
+	$\lim\limits_{n\to\infty}\dfrac{2^n-1}{2^n} = 1$
+	
+	\medskip
+	{\bf 177.} $\lim\limits_{n\to\infty} \left[1-\dfrac{1}{3}+\dfrac{1}{9}-\dfrac{1}{27}+\dots+\dfrac{(-1)^{n-1}}{3^{n-1}}\right]$
+	
+	$
+	3^{n-1}-3^{n-2}+3^{n-3}+\dots+(-1)^{n+1} = \dfrac{b_1(q^n-1)}{q-1} = \dfrac{3^{n-1}(\left(\frac{-1}{3}\right)^n-1)}{\frac{-1}{3}-1} = \dfrac{3^{n-1}-\dfrac{(-1)^n}{3}}{\frac{4}{3}} = \dfrac{3^n - (-1)^n}{4}
+	$
+	
+	$
+	\lim\limits_{n\to\infty} \dfrac{3^n-(-1)^n}{4\cdot3^{n-1}} = \dfrac{3}{4}
+	$
+	
+	\medskip
+	{\bf 178.} $\lim\limits_{n\to\infty} \dfrac{1^2+2^2+\dots+n^2}{n^3} =\lim\limits_{n\to\infty} \dfrac{n(n+1)(2n+1)}{6n^3} = \lim\limits_{n\to\infty} \dfrac{2n^3+3n^2+n}{6n^3} = \dfrac{1}{3}$
+	
+	\medskip
+	{\bf 179.} $\lim\limits_{n\to\infty} (\sqrt{n+1}-\sqrt{n}) = \lim\limits_{n\to\infty} \dfrac{n+1-n}{\sqrt{n+1}+\sqrt{n}} = \lim\limits_{n\to\infty} \dfrac{1}{\sqrt{n+1}+\sqrt{n}} = 0$
+	
+	\medskip
+	{\bf 180.} $\lim\limits_{n\to\infty} \dfrac{n\sin(n!)}{n^2+1}$ 
+	\[
+		\dfrac{-n}{n^2+1} \le \dfrac{n\sin(n!)}{n^2+1}\le \dfrac{n}{n^2+1}
+	\]
+	Поэтому 
+	\[
+		\lim\limits_{n\to\infty}\dfrac{-n}{n^2+1} \le \lim\limits_{n\to\infty}\dfrac{n\sin(n!)}{n^2+1} \le \lim\limits_{n\to\infty}\dfrac{n}{n^2+1}
+	\]
+	\[
+		0\le\lim\limits_{n\to\infty}\dfrac{n\sin(n!)}{n^2+1} \le 0
+	\]
+	
+	Отсюда следует, что $\lim\limits_{n\to\infty}\dfrac{n\sin(n!)}{n^2+1} = 0$
+	
+	
+	\medskip
+	{\bf 181.} $\lim\limits_{x\to\infty}\dfrac{(x+1)^2}{x^2+1} = \lim\limits_{x\to\infty} \dfrac{x^2+2x+1}{x^2+1} = \lim\limits_{x\to\infty} \dfrac{1+\frac{2}{x}+\frac{1}{x^2}}{1+\frac{1}{x^2}} = \lim\limits_{x\to\infty} \dfrac{1+0+0}{1+0} = 1$
+	
+	\medskip
+	{\bf 182.} $\lim\limits_{x\to\infty} \dfrac{1000x}{x^2-1} = \lim\limits_{x\to\infty} \dfrac{1000\frac{1}{x}}{1-\frac{1}{x^2}} = \lim\limits_{x\to\infty} \dfrac{0}{1-0} = 0$
+	
+	\medskip
+	{\bf 183.} $\lim\limits_{x\to\infty} \dfrac{x^2-5x+1}{3x+7} = \lim\limits_{x\to\infty} \dfrac{x-5+\frac{1}{x}}{3+\frac{7}{x}} = \infty
+$	
+	
+	
+	\medskip
+	{\bf 184.} $\lim\limits_{x\to\infty} \dfrac{2x^2-x+3}{x^3-8x+5} = \lim\limits_{x\to\infty} \dfrac{\frac{2}{x}-\frac{1}{x^2}+\frac{3}{x^3}}{1-\frac{8}{x^2}+\frac{5}{x^3}} = 0$
+	
+	
+	\medskip
+	{\bf 185.} $\lim\limits_{x\to\infty} \dfrac{(2x+3)^3(3x-2)^2}{x^5+5} = \lim\limits_{x\to\infty} \dfrac{8x^3\cdot9x^2+\dots}{x^5+5} = 72$
+	
+	\medskip
+	{\bf 186.} $\lim\limits_{x\to\infty} \dfrac{2x^2-3x-4}{\sqrt{x^4+1}} = \lim\limits_{x\to\infty} \dfrac{2-\frac{3}{x}-\frac{4}{x^2}}{\sqrt{1+\frac{1}{x^4}}} = 2$
+	
+	\medskip
+	{\bf 187.} $\lim\limits_{x\to\infty}\dfrac{2x+3}{x+\sqrt[3]{x}} = \lim\limits_{x\to\infty} \dfrac{2+\frac{3}{x}}{1+x^{-2/3}} = 2$
+	
+	\medskip
+	{\bf 188.} $\lim\limits_{x\to\infty} \dfrac{x^2}{10+x\sqrt{x}} = \lim\limits_{x\to\infty}\dfrac{\sqrt{x}}{10x^{-2/3}+1} = \infty$ 
+	
+	\medskip
+	{\bf 189.} $\lim\limits_{x\to\infty} \dfrac{\sqrt[3]{x^2+1}}{x+1} = \lim\limits_{x\to\infty} \dfrac{\sqrt[3]{x^{-1/3}+x^{-1}}}{1+\frac{1}{x}} = 0$
+	
+	
+	\medskip
+	{\bf 190.} $\lim\limits_{x\to+\infty} \dfrac{\sqrt{x}}{\sqrt{x+\sqrt{x+\sqrt{x}}}} = \lim\limits_{x\to+\infty} \dfrac{1}{\sqrt{1+\sqrt{\frac{1}{x}+\frac{1}{x^3}}}} = 1$
+	
+	\medskip
+	{\bf 191.} $\lim\limits_{x\to-1} \dfrac{x^3+1}{x^2+1} = 0$
+	
+	\medskip
+	{\bf 192.} $\lim\limits_{x\to5}\dfrac{x^2-5x+10}{x^2-25} = \infty$
+	
+	\medskip
+	{\bf 193.} $\lim\limits_{x\to-1}\dfrac{x^2-1}{x^2+3x+2} = \lim\limits_{x\to-1}\dfrac{(x-1)(x+1)}{(x+1)(x+2)} = \lim\limits_{x\to-1}\dfrac{x-1}{x+2} = -2$
+	
+	\medskip
+	{\bf 194.} $\lim\limits_{x\to2}\dfrac{x^2-2x}{x^2-4x+4} = \lim\limits_{x\to2} \dfrac{x(x-2)}{(x-2)^2} = \lim\limits_{x\to2}\dfrac{x}{x-2} = \infty$
+	
+	\medskip
+	{\bf 195.} $\lim\limits_{x\to1} \dfrac{x^3-3x+2}{x^4-4x+3} = \lim\limits_{x\to1} \dfrac{x^3-4x+x+2}{x^4-x-3(x-1)} =\lim\limits_{x\to1} \dfrac{x(x-2)(x+2)+(x+2)}{x(x-1)(x^2+x+1)-3(x-1)} = $
+	
+	$
+	= \lim\limits_{x\to1}\dfrac{(x+2)(x^2-2x+1)}{(x-1)(x^3+x^2+x-3)} = \lim\limits_{x\to1}\dfrac{(x+2)(x-1)^2}{(x-1)(x^3-2x^2+x+3x^2-3)} = \lim\limits_{x\to1} \dfrac{(x+1)(x-1)}{x(x-1)^2+3(x^2-1)} = 
+	$
+	
+	$
+	= \lim\limits_{x\to1} \dfrac{(x+1)(x-1)}{(x-1)(x(x-1)+3(x+1)} = \lim\limits_{x\to1} \dfrac{x+1}{x^2-x+3x+3} = \lim\limits_{x\to1} \dfrac{x+1}{x^2+2x+3} = \dfrac{2}{1+2+3} = \dfrac{1}{3}
+	$
+	
+	\medskip
+	{\bf 196.} $\lim\limits_{x\to a} \dfrac{x^2-(a+1)x+a}{x^3-a^3} = \lim\limits_{x\to a} \dfrac{(x-a)(x-1)}{(x-a)(x^2+ax+a^2)} = \lim\limits_{x\to a} \dfrac{x-1}{x^2+ax+a^2} = \dfrac{a-1}{3a^2}$
+	
+	\medskip
+	{\bf 197.} $\lim\limits_{h\to 0}\dfrac{(x+h)^3-x^3}{h} = \lim\limits_{h\to 0} \dfrac{(x+h-x)((x+h)^2+x(x+h)+x^2)}{h} = (x+0)^2+x(x+0)+x^2 = 3x^2$
+	
+	\medskip
+	{\bf 198.} $\lim\limits_{x\to1}\left(\dfrac{1}{1-x}-\dfrac{3}{1-x^3}\right) = \lim\limits_{x\to1} \left(\dfrac{3}{(x-1)(x^2+x+1)}-\dfrac{1}{x-1}\right) = \lim\limits_{x\to1} \dfrac{3-x^2-x-1}{(x-1)(x^2+x+1)} = $
+	
+	$
+	-\lim\limits_{x\to1} \dfrac{x^2+x-2}{(x-1)(x^2+x+1)} = \lim\limits_{x\to1} \dfrac{(x-1)(x+2)}{(x-1)(x^2+x+1)} = \lim\limits_{x\to1}\dfrac{x+2}{x^2+x+1} = 1
+	$
+	
+	
+	
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
