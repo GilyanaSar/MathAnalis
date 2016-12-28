@@ -1,0 +1,971 @@
+\documentclass[12pt]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cancel}
+
+%\usepackage[leqno]{amsmath}
+\pagestyle{empty}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% Цвета для гиперссылок
+\definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
+\definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
+
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\usepackage{tikz}
+\usepackage{chngcntr}
+
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+
+
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+\vspace{5mm}
+
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+
+\parskip=1pt %интервал между абзацами
+\oddsidemargin=-1.3cm %отступ от правого края
+\topmargin=-2.5cm %отступ от верхнего края
+\textwidth=18.5cm %Ширина текста
+\textheight=24cm
+
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\renewcommand{\baselinestretch}{1.25}%Расстояние между строками
+
+
+
+\begin{document}
+	
+	\tableofcontents
+	
+	\newpage
+	
+\begin{center}
+	\section[<Введение в анализ>]{<Введение в анализ>}
+\end{center}
+
+\subsection[<Понятие функции>]{<Понятие функции>}
+\medskip
+
+$1^{\circ}$. {\tt Действительные числа.} Числа рациональные и иррациональные носят название {\it действительных} или {\it вещественных} чисел. {\it Под абсолютной величиной} действительного числа a понимается неотрицательное число $|a|$, определяемое условиями: $|a|=a$, если $a\ge0$, и $|a|=-a$, если $a<0$. Для любых вещественных чисел a и b справедливо неравенство
+
+\[
+	|a+b|\le |a|+|b|.
+\]
+
+$2^{\circ}$. {\tt Определение функции.} Если каждому значению переменной величины x, принадлежащему некоторой совокупности (множеству) $E$, соответствует одно и только одно конечное значение величины y, то y называется {\it функцией} (однозначной) от x или {\it зависимой переменной}, определенной на множестве $E$; x называется {\it аргументом} или {\it независимой переменной}. То обстоятельство, что y есть функция от x, кратко выражают записью: $y=f(x)$ или $y=F(x)$ и т.п.
+
+Если каждому значению x, принадлежащему некоторому множеству $E$, соответствует одно или несколько значений переменной величины y, то y называется {\it многозначной функцией} от x, определенной на множестве $E$. В дальнейшем под словом "функция" мы будем понимать только {\it однозначные} функции, если явно не оговорено противное.\vspace{2mm}
+
+$3^{\circ}$. {\tt Область существования функции.} Совокупность значения x, для которых данная функция определена, называется {\it областью существования} или {\it областью определения} этой функции.
+
+В простейших случаях область существования функции представляет собой: или {\it отрезок} ({\it сегмент}) $[a; b]$, т.е. множество вещественных чисел x, удовлетворяющих неравенствам $a\le x\le b$; или {\it промежуток} ({\it интервал}) (a, b), т.е. множество вещественных чисел x, удовлетворяющих неравенствам $a<x<b$. Но возможна и более сложная структура области существования функции.
+\vspace{1mm}
+\qquad{\tt Пример 1.} Определите область существования функции
+\[
+	y=\frac{1}{\sqrt{x^2-1}}	
+\]
+\qquad{\tt Решение.} Функция определена, если 
+\[
+	x^2-1>0
+\]
+т.е. если $|x|>1$. Таким образом, область существования функции представляет собой совокупность двух интервалов: $-\infty<x<-1$ и $1<x<+\infty$.\vspace{2mm}
+
+$4^{\circ}$. {\tt Обратные функции.} Если уравнение $y=f(x)$ может быть однозначно разрешено относительно переменной x, т.е. существует функция $x=g(y)$ такая, что $y=f[g(y)]$, то функция $x=g(y)$, или в стандартных обозначениях $y=g(x)$, называется {\it обратной} по отношению к $y=f(x)$. Очевидно, что $g[f(x)]\equiv x$, т.е. функции $f(x)$ и $g(x)$ являются {\it взаимно обратными}.
+
+В общем случае уравнение $y=f(x)$ определяет многозначную обратную функцию $x=f^{-1}(y)$ такую, что $y\equiv f(f^{-1}(y))$ для всех y, являющихся значениями функции $f(x)$.\vspace{1mm}
+
+{\tt Пример 2.} Для функции
+\begin{equation}\label{eq:01}
+	y=1-2^{-x}
+\end{equation}
+определите обратную.
+
+{\tt Решение.} Решив уравнение (\ref{eq:01}) относительно x, будем иметь 
+
+\begin{equation}\label{eq:02}
+	2^{-x} = 1-y\quad\text{и}\quad x = -\frac{\lg(1-y)}{\lg 2}.
+\end{equation}
+Область определения функции (\ref{eq:02}), очевидно, следующая: $-\infty<y<1$.\vspace{2mm}
+
+$5^{\circ}.$ {\tt Сложные и неявные функции.} Функция y от x, заданная цепью неравенств $y=f(u)$, где $u=\varphi(x)$ и т.п., называется {\it сложной} или {\it функцией от функции}.
+
+Функция, заданная уравнением, не разрешенным относительно зависимой переменной, называется {\it неявной}. Например, уравнение $x^3+y^3=1$ определяет y как неявную функцию от x.\vspace{2mm}
+
+$6^{\circ}$. {\tt Графическое изображение функции.} Множество точек (x, y) плоскости $XOY$, координаты которых связаны уравнением $y=f(x)$, называется графиком данной функции.
+
+\hspace{-2mm}\line(1,0){540}
+
+{\bf Модуль вещественного числа и его свойства}
+
+\quad {\tt Определение.} Модуль вещественного числа $a$ - это само число $a$, если $a\ge0$, и противоположное число $-a$, если $a<0$.
+	\begin{equation*}
+		|a| = \begin{cases}
+			a, &a\ge0 \\
+			-a, &a<0
+		\end{cases}
+	\end{equation*}
+	
+\hspace{2mm}\line(1,0){540}
+
+{\bf 1.} Доказать, что если $a$ и $b$ - действительные числа, то
+\[\label{task1}
+	||a|-|b||\le|a-b|\le|a|+|b|.
+\]
+\qquad{\tt Решение.} Рассмотрим первую часть неравенства
+\[
+	||a|-|b||\le|a-b|
+\]
+Возведем обе части в квадрат
+\[
+	(|a|-|b|)^2 = (|a|)^2-2|a|\cdot|b|+(|b|)^2 = a^2-2|ab|+b^2
+\]
+\[
+	(|a-b|)^2 = (a-b)^2 = a^2-2ab+b^2
+\]
+Сравним обе части 
+\begin{align*}
+	\bcancel{a^2}-2|ab|+\bcancel{b^2}\hspace{2mm} \le&\hspace{2mm} \bcancel{a^2}-2ab+\bcancel{b^2} \\
+	-2|ab|\hspace{2mm}\le& -2ab \\
+	ab\hspace{2mm}\le& \hspace{2mm}|ab|
+\end{align*}
+{\it Доказано.}
+\medskip
+
+Рассмотрим вторую часть неравенства
+\[
+	|a-b|\le |a|+|b|
+\]
+Возведем обе часть неравенства
+\[
+	(|a-b|)^2 = (a-b)^2 = a^2-2ab+b^2
+\]
+\[
+	(|a|+|b|)^2 = (|a|)^2+2|a|\cdot|b|+(|b|)^2 = a^2+2|ab|+b^2
+\]
+Сравним обе части 
+\begin{align*}
+	\bcancel{a^2}-2ab+\bcancel{b^2} \hspace{2mm}\le&\hspace{2mm} \bcancel{a^2}+2|ab|+\bcancel{b^2} \\
+	-2ab\hspace{2mm}\le&\hspace{2mm}2|ab| \\
+	-ab\hspace{2mm}\le&\hspace{2mm} |ab|
+\end{align*}
+{\it Доказано.}
+
+	
+ Соединяя два этих неравенства получаем верное двойное неравенство.
+	
+{\bf 2.} Доказать следующие неравенства:
+\begin{align*}
+	&a) |ab| = |a|\cdot|b| &c) \left|\frac{a}{b}\right| = \frac{|a|}{|b|}\\
+	&b)|a|^2 = a^2 &d)\sqrt{a^2} = |a|
+\end{align*}
+{\tt Доказательство 2(a).} Рассмотрим несколько случаев. Первый случай: $a,b\ge 0$\vspace{1mm}
+
+$|a\cdot b| = a\cdot b$, \quad $|a|\cdot|b| = a\cdot b$ $\Longrightarrow$ $|a\cdot b| = |a|\cdot|b|$
+
+\hspace{-6mm}Второй случай: $a,b<0$\vspace{1mm}
+
+$|a\cdot b| = (-a)\cdot(-b) = ab$, \quad $|a|\cdot|b| = (-a)\cdot(-b) =ab$ $\Longrightarrow$ $|a\cdot b|=|a|\cdot|b|$
+
+\hspace{-6mm}Третий случай: $a\ge0,$, $b<0$\vspace{1mm}
+
+$|a\cdot b| = a\cdot(-b) = -ab$, \quad $|a|\cdot|b| = a\cdot(-b) = -ab$ $\Longrightarrow$ $|a\cdot b| = |a|\cdot|b|$ 
+	
+	
+	\hspace{-2mm}{\it Доказано.}
+	
+	
+{\bf 3.} Решить неравенства:
+\begin{align*}
+	&a) |x-1|<3 & &c)|2x+1|<1\\
+	&b)|x+1|>2 & &d)|x-1|<|x+1|
+\end{align*}
+	{\tt Доказательство 2(a).} Возведем обе части в квадрат
+	\[
+		(x-1)^2 <3^2\hspace{2mm}\Longrightarrow(x-1-3)(x-1+3)<0\hspace{2mm}\Longrightarrow(x-4)(x+2)<0
+	\]
+	Ответ: $x\in(-2; 4)$
+	
+	{\tt Доказательство 2(b).} Возведем обе части в квадрат
+	\[
+		(x+1)^2>2^2\hspace{2mm}\Longrightarrow\hspace{2mm}(x+1-2)(x+1+2)>0\hspace{2mm}\Longrightarrow\hspace{2mm}(x-1)(x+3)>0
+	\] 
+	Ответ: $x\in(-\infty;-3) \cup (1;+\infty)$
+	
+	{\tt Доказательство 2(c).} Возведем обе части в квадрат
+	\[
+		(2x+1)^2<1^2\hspace{2mm}\Longrightarrow\hspace{2mm}(2x+1-1)(2x+1+1)<0\hspace{2mm}\Longrightarrow\hspace{2mm}2x(2x+2)<0\hspace{2mm}\Longrightarrow\hspace{2mm}x(x+1)<0
+	\]
+	Ответ: $x\in (-1;0)$
+	
+	{\tt Доказательство 2(d).} Возведем обе части в квадрат
+	\[
+		(x-1)^2<(x+1)^2\hspace{2mm}\Longrightarrow\hspace{2mm}(x-1-x-1)(x-1+x+1)<0\hspace{2mm}\Longrightarrow\hspace{2mm}-2(2x)<0\hspace{2mm}\Longrightarrow\hspace{2mm}x>0
+	\]
+	Ответ: $x\in(0;+\infty)$\vspace{2mm}
+	
+{\bf 4.} Найти $f(-1)$, $f(0)$, $f(1)$, $f(2)$, $f(3)$, $f(4)$, если $f(x)=x^3-6x^2+11x-6$
+	
+	\hspace{-3mm}{\tt Решение}
+	
+	$f(-1) = (-1)^3-6(-1)^2+11(-1)-6 = -1-6-11-6 = -24$
+	
+	$f(0) = (0)^3-6(0)^2+11(0)-6 = -6$
+	
+	$f(1)=(1)^3-6(1)^2+11(1)-6 = 1-6+11-6 = 0$
+	
+	$f(2) = (2)^3-6(2)^2+11(2)-6 = 8-24+22-6 = 0$
+	
+	$f(3) = (3)^3-6(3)^2+11(3)-6 = 27-54+33-6 = 0$
+	
+	$f(4) = (4)^3 -6(4)^2+11(4)-6 = 64-96+44-6 = 6$\vspace{2mm}
+	
+{\bf 5.} $f(0)$, $f\left(-\dfrac{3}{4}\right)$, $f(-x)$, $f\left(\dfrac{1}{x}\right)$, $\dfrac{1}{f(x)}$, если $f(x)=\sqrt{1+x^2}$.
+
+\hspace{-3mm}{\tt Решение}
+
+$f(0) = \sqrt{1+0^2} = 1$\vspace{2mm}
+
+$f\left(-\dfrac{3}{4}\right) = \sqrt{1+\left(-\dfrac{3}{4}\right)^2} = \sqrt{1+\dfrac{9}{16}} = \sqrt{\dfrac{25}{16}} = \dfrac{5}{4}$\vspace{2mm}
+
+$f(-x) = \sqrt{1+(-x)^2} = \sqrt{1+x^2} = f(x)$\vspace{2mm}
+
+$f\left(\dfrac{1}{x}\right) = \sqrt{1+\left(\dfrac{1}{x}\right)^2} = \sqrt{1+\dfrac{1}{x^2}} = \sqrt{\dfrac{1+x^2}{x^2}} = \dfrac{\sqrt{1+x^2}}{|x|} = \dfrac{f(x)}{|x|}$ \vspace{2mm}
+
+$\dfrac{1}{f(x)} = \dfrac{1}{\sqrt{1+x^2}}$
+
+{\bf 6.} Пусть $f(x) = \arccos(\lg x).$ Найти $f\left(\dfrac{1}{10}\right)$, $f(1)$, $f(10)$.
+
+\hspace{-3mm}{\tt Решение.}\vspace{2mm}
+
+$f\left(\dfrac{1}{10}\right)= \arccos(\lg\dfrac{1}{10}) = \arccos(\lg(10^{-1})) = \arccos(-1) = \pi$\vspace{2mm}
+
+$f(1) = \arccos(\lg(1)) = \arccos(0) = \dfrac{\pi}{2}$\vspace{2mm}
+
+$f(10) = \arccos(\lg(10)) = \arccos(1) = 0$\vspace{2mm}
+
+{\bf 7.} Функция $f(x)$ - линейная. Найти эту функцию, если $f(-1) = 2$ и $f(2)=-3$.
+
+{\tt Решение.} Так как функция $y=f(x)$ линейна, то она принимает вид $y = kx+b$
+
+\begin{equation*}
+	\begin{cases*}
+		2 = (-1)k+b \\
+		-3 = 2k +b
+	\end{cases*} (-) =  2-(-3) \Longrightarrow -k-2k+b-b \Longrightarrow 5 = -3k \Longrightarrow k =-\frac{5}{3}
+\end{equation*}
+
+$2 = -k +b = -(-\dfrac{5}{3}) +b= \dfrac{5}{3}+b$ \quad$\Longrightarrow$\quad $b = 2-\dfrac{5}{3} = \dfrac{1}{3}$
+
+\vspace{2mm}\hspace{-4mm}Ответ: $f(x) = -\dfrac{5}{3}x+\dfrac{1}{3}$\vspace{2mm}
+
+{\bf 8.} Найти целую рациональную функцию $f(x)$ второй степени, если $f(0) =1$, $f(1)=0$, $f(3) = 5$
+
+{\tt Решение.} Так как функция $y =f(x)$ второй степени, то она принимает вид $y=ax^2+bx+c$
+
+\begin{equation*}
+	\begin{cases}
+		1 = 0\cdot a +0\cdot b+c \\
+		0 = 1\cdot a +1\cdot b +c \\
+		5 = 3^2\cdot a+3\cdot b+c
+	\end{cases} \equiv \quad
+	\begin{cases}
+		1 = c \\
+		0 = a+b+c \\
+		5 = 9a+3b+c
+	\end{cases} \equiv\quad
+	\begin{cases}
+		0 = a+b+1 \\
+		5 = 9a+3b+1
+	\end{cases} \equiv\quad
+	\begin{cases}
+		b = -a-1\\
+		4 = 9a+3b
+	\end{cases}
+\end{equation*}
+
+$4 = 9a +3(-a-1) = 9a -3a-3$\quad$\Longrightarrow$\quad $7 = 6a$\quad$\Longrightarrow$\quad $a = \dfrac{7}{6}$\vspace{2mm}
+
+$b = -a-1 = -\dfrac{7}{6}-1 = \dfrac{-13}{6}$
+
+\vspace{2mm}\hspace{-4mm}Ответ: $f(x) = \dfrac{7}{6}x^2-\dfrac{13}{6}x+1$\vspace{2mm}
+
+{\bf 9.} Известно, что $f(4)=-2$, $f(5)=6$. Найти приближенное значение $f(4,3)$, считая функцию $f(x)$ на участке $4\le x\le 5$ линейной ({\it линейная интерполяция функции}).
+	
+{\tt Решение.} Так как функция $y=f(x)$ линейна на отрезке [4;5], то
+	\begin{equation*}
+	\begin{cases}
+		-2 = 4k+b \\
+		6 = 5k+b
+	\end{cases}(-)\quad \equiv \quad
+	8 = k \quad\Longrightarrow\quad k =8
+	\end{equation*}
+	
+	$b = -2-4k = -2-4\cdot8 = -2-32 = -34$
+	\vspace{2mm}
+	
+	$f(4.3) = kx+b = 8\cdot4.3-34 = 34.4-34 = 0.4$
+	
+	\vspace{2mm}\hspace{-4mm}Ответ: $f(4.3) = 0.4$\vspace{2mm}
+	
+	{\bf 10.} Функцию
+	\begin{equation*}
+		f(x) = 
+		\begin{cases}
+			0, \text{ если } x\le 0\\
+			x, \text{ если } x>0,
+		\end{cases}
+	\end{equation*}
+	записать при помощи одной формулы, пользуясь знаком абсолютной величины.
+	
+	\vspace{2mm}\hspace{-4mm}Ответ: $\dfrac{1}{2}|x|+\dfrac{1}{2}x$
+	\vspace{2mm}
+	
+	\hspace{-5mm}{\tt Определить области существования функций(11-21): }
+	
+	{\bf 11.} a) $y = \sqrt{1+x}$ \quad b) $y = \sqrt[3]{1+x}$
+	
+	{\tt Решение.} a) Функция определена, если 
+	\[
+		1+x\ge 0\quad \text{т.е.}\quad x\ge-1
+	\]
+	Таким образом, область существования функции представляет собой  $D(y) = [-1;+\infty)$
+	
+	b) Функция определена при любом x. $D(y) = (-\infty; \infty)$\vspace{2mm}
+	
+	{\bf 12.} $y = \dfrac{1}{4-x^2}$\vspace{2mm}
+	
+	{\tt Решение} Функция определена, если
+	\[
+		4-x^2 \neq 0 \quad\Longrightarrow\quad |x|\neq2
+	\]
+	
+	Ответ: $D(y) = (-\infty; -2)\cup(-2; 2)\cup(2;\infty)$\vspace{2mm}
+	
+	{\bf 13.} a) $y = \sqrt{x^2-2}$ \quad b) $y=x\sqrt{x^2-2}$
+	
+	{\tt Решение.} a) Функция определена, если
+	\[
+		x^2-2\ge 0\quad\Longrightarrow\quad|x|\ge\sqrt{2}
+	\]
+	
+	Таким образом, область существования функции равна $D(y) = (-\infty; -\sqrt{2}]\cup[\sqrt{2};+\infty)$ 
+	
+	b) Функция определена, если 
+	\[
+		x^2-2\ge0 \text{ ,а также }x=0
+	\]
+	
+	\hspace{-2mm}Ответ: $D(y) = (-\infty;\sqrt{2}]\cup\{0\}\cup[\sqrt{2};+\infty)$\vspace{2mm}
+	
+	{\bf 14.} $y=\sqrt{2+x-x^2}$
+	
+	{\tt Решение.} Функция определена, если
+	\[
+		2+x-x^2\ge0\quad\Longrightarrow\quad x^2-x-2\le0
+	\]
+	\qquad$D = 1+2\cdot4 = 1+8 = 9 = 3^2$\vspace{2mm}
+	
+	$x_{1,2} = \dfrac{1\pm\sqrt{D}}{2} = \dfrac{1\pm3}{2} = 2;-1$\vspace{2mm}
+	
+	Область существования функции $D(y) = [-1;2]$\vspace{2mm}
+	
+	{\bf 15.} $y = \sqrt{-x} +\dfrac{1}{\sqrt{2+x}}$
+	
+	{\tt Решение.} Функция определена, если 
+	\[
+		-x\ge0 \quad\text{и}\quad 2+x>0
+	\]
+	\begin{equation*}
+	\begin{cases}
+		-x\ge0 \\
+		2+x>0
+	\end{cases}\equiv\quad
+	\begin{cases}
+		x\le 0\\x>-2
+	\end{cases}\equiv\quad x\in[-2;0]
+	\end{equation*}
+	
+	Ответ: $D(y) = [-2;0]$
+	\vspace{2mm}
+	
+	{\bf 16.} $y=\sqrt{x-x^3}$
+	
+	{\tt Решение.} Функция определена, если
+	\[
+		x-x^3 = x(1-x^2)= x(1-x)(1+x)\ge0\quad\Leftrightarrow\quad(x+1)x(x-1)\le0
+	\]
+	
+	Ответ: $D(y) = (-\infty;-1]\cup[0;1]$
+	\vspace{2mm}
+	
+	{\bf17.} $y=\lg\dfrac{2+x}{2-x}$
+	
+	{\tt Решение.} Функция определена, если
+	\[
+	\dfrac{2+x}{2-x}>0\quad\Leftrightarrow\quad\dfrac{x+2}{x-2}<0
+	\]
+	
+	Ответ: $D(y)=(-2;2)$\vspace{2mm}
+	
+	{\bf 18.} $y =\lg\dfrac{x^3-3x+2}{x+1}$
+	
+	{\tt Решение.}
+	\[
+		\dfrac{x^3-3x+2}{x+1} = \dfrac{x^3-x-2(x-1)}{x+1} = \dfrac{x(x-1)(x+1)-2(x-1)}{x+1}=\dfrac{(x-1)(x^2+x-2)}{x+1} = \dfrac{(x-1)^2(x+2)}{x+1}>0
+	\]
+	
+	Ответ: $D(y) = (-\infty; -2)\cup(-1;1)\cup(1;+\infty)$
+	\vspace{2mm}
+	
+	{\bf 19.} $y=\arccos\dfrac{2x}{1+x}$
+	
+	{\tt Решение.}
+	\[
+		-1\le\dfrac{2x}{1+x}\le1 \quad\text{ и }\quad1+x\neq0
+	\]\vspace{2mm}
+	
+	$\dfrac{2x}{1+x}\ge-1$ $\Leftrightarrow$ $\dfrac{2x+1+x}{1+x}\ge 0$ $\Leftrightarrow$ $\dfrac{3x+1}{x+1}\ge0$ $\Leftrightarrow$ $x\in (-\infty; -1)\cup(-\dfrac{1}{3};+\infty)$\vspace{2mm}
+	
+	$\dfrac{2x}{x+1}\le 1$ $\Leftrightarrow$ $\dfrac{2x-x-1}{x+1}\le 1$ $\Leftrightarrow$ $\dfrac{x-1}{x+1}\le0$ $\Leftrightarrow$ $x\in(-1;1]$\vspace{2mm}
+	
+	\begin{equation*}
+	\begin{cases}
+		x\neq-1 \\
+		x \in (-\infty;-1)\cup(-\dfrac{1}{3};+\infty) \\
+		x\in (-1;1]
+	\end{cases} \equiv \quad x\in (-\dfrac{1}{3};1]
+	\end{equation*}
+{\bf 20.} $y = \arcsin\left(\lg\dfrac{x}{10}\right)$
+
+{\tt Решение.} 
+\[
+	-1\le\lg\dfrac{x}{10}\le 1
+\]
+
+Рассмотрим первую часть неравенства:
+\begin{equation*}
+\begin{cases}
+	\lg\dfrac{x}{10}\ge -1\\
+	\dfrac{x}{10}>0
+\end{cases} \equiv\quad 
+\begin{cases}
+	\lg(x)-\lg(10)\ge -1\\
+	x>0
+\end{cases}\equiv\quad 
+\begin{cases}
+	\lg(x)\ge0 \\x>0
+\end{cases}\equiv\quad
+\begin{cases}
+	x\ge 1\\
+	x>0
+\end{cases} \equiv\quad x\ge1
+\end{equation*}
+
+Рассмотрим вторую часть неравенства:
+
+\begin{equation*}
+\begin{cases}
+	\lg\dfrac{x}{10}\le 1\\
+	\dfrac{x}{10} >0
+\end{cases}\equiv\quad 
+\begin{cases}
+	\lg x - 1\le 1 \\x>0
+\end{cases}\equiv \quad 
+\begin{cases}
+	\lg x\le 2 \\
+	x>0
+\end{cases}\equiv\quad
+\begin{cases}
+	x\le 100\\
+	x>0
+\end{cases} \equiv\quad x\in (0;100]
+\end{equation*}
+
+	Соединим эти два неравенства и получим
+	
+	Ответ: $x\in [1;100]$
+	\vspace{2mm}
+	
+{\bf 21.} $y =\sqrt{\sin 2x}$
+
+{\tt Решение.} Функция определена, если 
+\[
+	\sin 2x \ge 0\quad\Leftrightarrow\quad 2x \in [2\pi k; \pi+2\pi k]\quad\Leftrightarrow\quad x\in [\pi k; \dfrac{\pi}{2}+\pi k]
+\]
+	
+	Ответ: $x\in [\pi k; \dfrac{\pi}{2}+\pi k]$ ($k\in Z$)
+	
+{\bf 22.} Пусть $f(x) =2x^4-3x^3-5x^2+6x-10$. Найти
+\[
+	\varphi(x) = \dfrac{1}{2}[f(x)+f(-x)] \text{ и } \psi(x) = \dfrac{1}{2}(f(x)-f(-x)
+\]
+	
+{\tt Решение.}
+
+$\varphi(x) = \dfrac{1}{2}[2x^4-3x^3-5x^2+6x-10+2(-x)^4-3(-x)^3-5(-x)^2+6(-x)-10] = \dfrac{1}{2}(2x^4-3x^3-5x^2+6x-10+2x^4+3x^3-5x^2-6x-10) = \dfrac{1}{2}(4x^4-10x^2-20) = 2x^4-5x^2-10$\vspace{2mm}
+
+$\psi(x) = \dfrac{1}{2}[2x^4-3x^3-5x^2+6x-10-2(-x)^4+3(-x)^3+5(-x)^2-6(-x)+10] = \dfrac{1}{2}(2x^4-3x^3-5x^2+6x-10-2x^4-3x^3+5x^2+6x+10) = \dfrac{1}{2}(-6x^3+12x) = -3x^3+6x$\vspace{2mm}
+	
+	Ответ: $\varphi(x) = 2x^4-5x^2-10$, $\psi(x) = -3x^3+6x$\vspace{2mm}
+	
+	
+	{\bf 23.} Функция $f(x)$, определенная в симметричной области $-l<x<l$, называется {\it четной}, если $f(-x) = f(x)$, и {\it нечетной}, если $f(-x)=-f(x)$
+	
+{\ttВыяснить, какие из данных функций являются четными и какие нечетными:}\vspace{2mm}
+
+a) $f(x) = \dfrac{1}{2}(a^x+a^{-x})$
+
+\hspace{-3mm}{\tt Решение:} $f(-x) = \dfrac{1}{2}(a^{-x}+a^{-(-x)}) = \dfrac{1}{2}(a^x+a^{-x}) = f(x)$
+
+Ответ: {\it Четная.}
+\vspace{2mm}
+
+b) $f(x) = \sqrt{1+x+x^2}-\sqrt{1-x+x^2}$
+
+\hspace{-3mm}{\tt Решение:} $f(-x) = \sqrt{1+(-x)+(-x)^2} - \sqrt{1-(-x)+(-x)^2} = \sqrt{1-x+x^2}-\sqrt{1+x+x^2} = -f(x)$
+
+Ответ: {\it Нечетная.}\vspace{2mm}
+
+c) $f(x) = \sqrt[3]{(x+1)^2}+\sqrt[3]{(x-1)^2}$
+
+\hspace{-3mm}{\tt Решение:} $f(-x) = \sqrt[3]{(-x+1)^2}+\sqrt[3]{(-x-1)^2} = \sqrt[3]{(x-1)^2}+\sqrt[3]{(x+1)^2} = f(x)$
+
+Ответ: {\it Четная.}\vspace{2mm}
+
+d) $f(x) = \lg\dfrac{1+x}{1-x}$
+
+\hspace{-3mm}{\tt Решение:} $f(-x) = \lg\dfrac{1-x}{1-(-x)} = \lg\dfrac{1-x}{1+x} = -\lg\dfrac{1+x}{1-x} = -f(x)$
+	
+	Ответ: {\it Нечетная.}\vspace{2mm}
+	
+e) $f(x) = \lg(x+\sqrt{1+x^2})$
+
+\hspace{-3mm}{\tt Решение:} $f(-x) = \lg(-x+\sqrt{1+(-x)^2}) = \lg(\sqrt{1+x^2}-x) = \lg\dfrac{1+x^2-x^2}{\sqrt{1+x^2}+x} = \lg\dfrac{1}{x+\sqrt{1+x^2}} = -\lg(x+\sqrt{1+x^2}) = -f(x)$
+	
+	Ответ: {\it Нечетная.}\vspace{2mm}
+	
+{\bf 24.} Доказать, что всякую функцию $f(x)$, определенную в интервале $-l<x<l$, можно представить в виде суммы четной и нечетной функции.
+	
+	{\tt Решение.} Рассмотрим две функции $\varphi(x)$ и $\psi(x)$.
+	
+	\[
+	\varphi(x) = \dfrac{f(x)+f(-x)}{2} = \varphi(-x)
+	\]
+	\[
+	\psi(x) = \dfrac{f(x)-f(-x)}{2} = -\dfrac{f(-x)-f(x)}{2} = \psi(-x)
+	\]
+	
+	
+	Как видим, $\varphi(x)$ четная, а $\psi(x)$ нечетная.
+	
+	Получаем, что
+	\[
+		f(x) = \varphi(x) +\psi(x) = \dfrac{f(x)+f(-x)}{2} + \dfrac{f(x)-f(-x)}{2} = f(x)
+	\]
+	{\it Доказано.}	\vspace{2mm}
+	
+	{\bf 25.} Доказать, что произведение двух четных функций или двух нечетных функций есть функция четная, а произведение четной и нечетной функций есть функция нечетная.
+	
+	{\tt Решение.} Докажем, что произведение двух четных функций есть четная функция. $f(x)$, $g(x)$ - две четные функции. Произведение этих функций есть функция $h(x)$
+	\[
+		h(x) = f(x)\cdot g(x) = f(-x)\cdot g(-x) = h(-x)
+	\]
+	
+	А теперь функции $f(x)$ и $g(x)$ нечетные, а $h(x)$ - произведение этих функций.
+	\[
+		h(x) = f(x)\cdot g(x) = (-f(x))\cdot(-g(x)) = f(-x)\cdot g(-x) = h(-x)
+	\] 
+	
+	Докажем, что произведение четной и нечетной функций есть нечетная функция. $f(x)$ - это четная функция, а $g(x)$ - это нечетная. Функция $h(x)$ - это произведение двух функций.
+	\[
+		h(x) = f(x)\cdot g(x) = f(-x)\cdot(-g(-x)) = -f(-x)\cdot g(-x) = -h(-x)
+	\]
+	{\it Доказано.}\vspace{2mm}
+	
+	{\bf 26.} Функция $f(x)$ называется {\it периодической}, если существует положительное число $T$ ({\it перид функции}) такое, что $f(x+T)\equiv f(x)$ для всех значений x, принадлежащий области существования функции $f(x)$.
+	
+	Определить, какие из перечисленных ниже функций являются периодическими функций найти наименьший их период T.
+	
+	a) $f(x) = 10\sin3x$
+	
+	{\tt Решение.} $\sin(x) = \sin(x+2\pi k)$
+	\[
+		f(x) = 10\sin(3x+2\pi k) = 10\sin(3(x+\dfrac{2\pi k}{3})) = f(x+\dfrac{2\pi}{3})
+	\]
+	
+	\hspace{3mm}Ответ: $\dfrac{2\pi}{3}$\vspace{2mm} 
+	
+	b) $f(x) =a\sin \alpha x+b\cos \alpha x$
+	
+	{\tt Решение.} 
+	\[
+		f(x) = a\sin(\alpha x) +b\cos(\alpha x) = a\sin(\alpha x+2\pi)+b\cos(\alpha x+2\pi) = a\sin(\alpha(x+\dfrac{2\pi}{\alpha}))+b\cos(\alpha(x+\dfrac{2\pi}{\alpha})) = f(x+\dfrac{2\pi}{\alpha})
+	\]
+	Ответ: $\dfrac{2\pi}{\alpha}$\vspace{2mm}
+
+c) $f(x) = \sqrt{\tg(x)}$
+
+{\tt Решение.}
+\[
+	\tg(x)\ge 0 \quad \Leftrightarrow\quad x\in [\pi k; \dfrac{\pi}{2}+\pi k)
+\]	
+\[
+	f(x) = \sqrt{\tg(x)} = \sqrt{\tg(x+\pi)} = f(x+\pi)
+\]
+Ответ: $\pi$
+	
+	d) $f(x) = \sin^2 x$
+	
+	{\tt Решение.} 
+\[
+	f(x) = \sin^2(x) = \dfrac{1-\cos(2x)}{2} = \dfrac{1-\cos(2x+2\pi)}{2} = \dfrac{1-\cos(2(x+\pi))}{2} = f(x+\pi)
+\]
+Ответ: $\pi$
+	
+	e) $f(x) = \sin(\sqrt{x})$
+	
+	{\tt Решение.}
+\[
+	f(x) = \sin(\sqrt{x}) = \sin(\sqrt{x}+\pi)
+\]
+Ответ: Непериодическая.\vspace{2mm}
+
+{\bf 27.} Выразить длину отрезка y=MN и площадь S фигуры AMN как функции от $x=AM$. Построить графики этих функций.
+
+\begin{tikzpicture}
+	\coordinate[label = left:$A$] (A)at(0,0);
+	\coordinate[label = above:$D$] (D)at(2,3);
+	\coordinate[label=above:$C$] (C)at(5,3);
+	\coordinate[label =right:$B$] (B)at(5,0);
+	\coordinate[label=below:$M$] (M) at(2,0);
+	\coordinate[label=right:$N$] (N) at (1,1.5);
+	\draw (A)--(D)--(C)--(B)--(M)--(A);
+	\draw (M)--(D);
+	\draw (1,0)--(N);
+\end{tikzpicture}
+	
+	
+	\newpage
+	
+	{\bf 29.} Найти $\varphi(\psi(x))$ и $\psi(\varphi(x))$, если $\varphi(x)=x^2$ и $\psi(x)=2^x$.
+	
+	{\tt Решение.} $\varphi(\psi(x)) = (\psi(x))^2 = (2^x)^2 = 2^{2x}$
+	
+	$\psi(\varphi(x)) = 2^{\varphi(x)} = 2^{x^2}$
+	
+	\hspace{-3mm}Ответ: $2^{2x}$, $2^{x^2}$
+	
+	{\bf 30.} Найти $f\{f[f(x)]\}$, если $f(x) =\dfrac{1}{1-x}$
+	
+	{\tt Решение.} $f\{f[f(x)]\} = \dfrac{1}{1-f[f(x)]} = \dfrac{1}{1-\frac{1}{1-f(x)}} = \dfrac{1-f(x)}{1-f(x)-1} = \dfrac{f(x)-1}{f(x)} = \dfrac{\frac{1}{1-x}-1}{\frac{1}{1-x}} = \dfrac{1-1+x}{1} = x$\vspace{2mm}
+	
+	\hspace{-3mm} Ответ: x\vspace{2mm}
+	
+	{\bf 31.} Найти $f(x+1)$, если $f(x-1)=x^2$
+	
+	{\tt Решение:} $f(x+1) = f(x+2-1) = (x+2)^2$
+	
+	\hspace{-3mm} Ответ: $(x+2)^2$	\vspace{2mm}
+	
+	{\bf 32.} Пусть $f(n)$ есть сумма n членов арифметической прогрессии.
+	 Показать что
+	 \[
+		 f(n+3)-3f(n+2)+3f(n+1) -f(n) =0
+	 \]
+	 
+	 {\tt Решение.}
+	 
+	 $f(n+3) = a_1+a_2+\dots+a_{n+3}$
+	 
+	 $f(n+2) = a_1+a_2+\dots+a_{n+2}$
+	 
+	 $f(n+1) = a_1+a_2+\dots+a_{n+1}$
+	 
+	 $f(n) = a_1+a_2+\dots+a_n$
+	\[
+		\hspace{-4.5mm}f(n+3)-f(n)+3(f(n+1)-f(n+2) = a_{n+1}+a_{n+2}+a_{n+3}+3(-a_{n+2}) = a_{n+1}+a_{n+2}+a_{n+3}-3a_{n+2} =a_{n+1}-2a_{n+2}+a_{n+3}
+	\]
+	
+	$a_{n+1} = a_n+d$
+	
+	$a_{n+2} = a_n+2d$ \quad$\Leftrightarrow$ $a_{n+2} = \dfrac{a_{n+1}+a_{n+3}}{2}$
+
+	$a_{n+3} = a_n+3d$
+	
+	\hspace{-3mm}Отсюда следует, что $a_{n+1}-2a_{n+2}+a_{n+3} = a_{n+1}-a_{n+1}-a_{n+3}+a_{n+3} = 0$
+	\vspace{2mm}
+	
+	{\bf 33.} Показать, что если 
+	\[
+		f(x) = kx+b
+	\] и числа $x_1,x_2,x_3$ образуют арифметическую прогрессию, то числа $f(x_1),f(x_2), f(x_3)$ также образуют арифметическую прогрессию.
+	
+	{\tt Решение.}
+	
+	$f(x_1) = kx_1+b$
+	
+	$f(x_2) = kx_2+b = kx_1+b+kd$
+	
+	$f(x_3) = kx_3+b = kx_2+b+kd = kx_1+b+kd+kd= kx_1+b+2kd$
+	
+	$b_1 = f(x_1)$
+	
+	$b_2 = f(x_2) = f(x_1)+kd = b_1+kd$
+	
+	$b_3 = f(x_3) = f(x_2)+kd = f(x_1)+2kd = b_1+2kd$ 
+	
+	\hspace{-3mm}{\it Доказано}\vspace{2mm}
+	
+	{\bf 34.} Доказать, что если $f(x)$ есть показательная функция, т.е. $f(x)=a^x$ (a>0), и числа $x_1,x_2,x_3$ образуют арифметическую прогрессию, то числа $f(x_1),f(x_2),f(x_3)$ образуют геометрическую прогрессию.
+	
+	{\tt Решение.}
+	
+	$f(x_1) = a^{x_1} $
+	
+	$f(x_2) = a^{x_2} = a^{d+x_1} = a^{x_1}\cdot a^d$
+	
+	$f(x_3) = a^{x_3} = a^{2d+x_1} = a^{x_1}\cdot a^{2d} = a^{x_1}\cdot (a^d)^2$ 
+	
+	\hspace{-3mm}{\it Доказано.}\vspace{2mm}
+	
+	{\bf 35.} Пусть
+	\[
+		f(x) = \lg \dfrac{1+x}{1-x}
+	\]
+	Показать, что
+	\[
+		f(x)+f(y) = f\left(\dfrac{x+y}{1+xy}\right)
+	\]
+	{\tt Решение.}
+	\[
+f\left(\dfrac{x+y}{1+xy}\right) = \lg\dfrac{1+\frac{x+y}{1+xy}}{1-\frac{x+y}{1+xy}} = \lg \dfrac{1+xy+x+y}{1+xy-x-y}  = \lg\dfrac{(1+x)(1+y)}{(1-y)(1-x)} = \lg\dfrac{1+x}{1-x}+\lg\dfrac{1+y}{1-y} = f(x)+f(y)
+	\]
+	
+	\hspace{-3mm}{\it Доказано.}\vspace{2mm}
+
+{\bf 36.} Пусть $\varphi(x) = \dfrac{1}{2}(a^x+a^{-x})$ и $\psi(x) = \dfrac{1}{2}(a^x-a^{-x})$. Показать, что\[
+	\varphi(x+y) = \varphi(x)\varphi(y)+\psi(x)\psi(y)
+\]	и\[
+	\psi(x+y) = \varphi(x)\psi(y) + \varphi(y)\psi(x)
+\]
+
+{\tt Решение.}
+\[
+\hspace{-2mm}\varphi(x)\varphi(y)+\psi(x)\psi(y) = \dfrac{1}{4}(a^x+a^{-x})(a^y+a^{-y}) +\dfrac{1}{4}(a^x-a^{-x})(a^y-a^{-y}) = \dfrac{1}{4}(2a^{x+y}+a^{x-y}+a^{y-x}+2a^{-x-y}-a^{x-y}-a^{y-x})=
+\]
+$
+\dfrac{1}{4}(2a^{x+y}+2a^{-x-y}) = \dfrac{1}{2}a^{x+y}+\dfrac{1}{2}a^{-x-y}=\varphi(x+y)
+$\[
+\varphi(x)\psi(y) + \varphi(y)\psi(x) = \dfrac{1}{4}(a^x+a^{-x})(a^y-a^{-y})+\dfrac{1}{4}(a^y+a^{-y})(a^x-a^{-x}) = \dfrac{1}{4}(2a^{x+y}-2a^{-x-y}) = \psi(x+y)
+\]
+
+{\bf 37.} Найти $f(-1)$, $f(0)$, $f(1)$ , если
+\begin{equation*}
+f(x) = \begin{cases}
+	\arcsin x \text{ при } -1\le x\le 0 \\
+	\arctan x \text{ при } 0<x<+\infty
+\end{cases}
+\end{equation*}
+	{\tt Решение.}
+	
+	$f(-1) = \arcsin(-1) = -\arcsin 1 = -\dfrac{\pi}{2}$
+	
+	$f(0) = \arcsin 0 = 0$
+	
+	$f(1) = \arctan 1 = \dfrac{\pi}{4}$ 
+	\vspace{2mm}
+	
+	{\bf 38.} Определить корни (нули) области положительности и области отрицательности функции y, если
+	
+	{\tt Решение:} a) $y=1+x$
+	
+	$y=0$ при $x=-1$.\quad $y>0$ при $x>-1$.\quad $y<0$ при $x<-1$
+	
+	\quad б) $y=2+x-x^2$
+	
+	$y=0$ при $2+x-x^2=0$ $\Leftrightarrow$ $x^2-x-2=0$
+	
+	\qquad $D = b^2-4a\cdot c = 1^2-4\cdot(-2) = 1+8 = 9 = 3^2$
+	
+	$x_{1,2} = \dfrac{b \pm \sqrt{D}}{2} = \dfrac{1 \pm 3}{2} = \{2; -1\}$
+	
+	Поэтому $y=2+x-x^2 = -(x-2)(x+1)$
+	
+	$y=0$ при $x=2$ и $x=-1$.\quad $y>0$ при $x \in (-1, 2)$.\quad $y<0$ при $x \in (-\infty, -1) \cup (2, +\infty)$
+	
+	\quad в) $y=x^2-x+1$ 
+	
+	$y=0$ при $x^2-x+1=0$
+	
+	\qquad $D = b^2-4a\cdot c = 1 - 4 = -3<0$
+	
+	Поэтому $x^2-x+1>0$
+	
+	Из этого следует, что $y \neq 0$ и $y>0$ при всех $x$.
+	
+	\quad г) $y=x^3-3x$
+	
+	$y=0$ при $x^3-3x=0$ 
+	
+	$0=x^3-3x = x(x^2-3)  = x(x-\sqrt{3})(x+\sqrt{3})$
+	
+	$y=0$ при $x=\{-\sqrt{3},0,\sqrt{3}\}$.\quad $y>0$ при $x\in (-\sqrt{3},0) \cup (\sqrt{3},+\infty)$.
+	
+	 $y<0$ при $x\in (-\infty, -\sqrt{3})\cup (0,\sqrt{3})$
+	
+	\quad д) $y=\lg\dfrac{2x}{x+1}$
+	
+	$y=0$  при $\lg\dfrac{2x}{x+1} = 0$
+	
+	$\lg\dfrac{2x}{x+1} = 0$ $\Leftrightarrow$ $\dfrac{2x}{x+1} = 1$ $\Leftrightarrow$ $\dfrac{2x-x-1}{x+1}=0$ $\Leftrightarrow$ $\dfrac{x-1}{x+1}=0$
+	
+	$y=0$ при $x=1$. \quad $y>0$ при $x\in (-\infty, -1)\cup (1,+\infty)$.\quad$y<0$ при $x\in (0,1)$
+	\medskip
+	
+	{\bf 39.} Для функции $y$ найти обратную, если:	
+	
+	{\tt Решение:} а) $y=2x+3$
+	
+	$f(x) = 2x+3$ $\Leftrightarrow$ $x = \dfrac{f(x)-3}{2}$ $\Leftrightarrow$ $g(y) = \dfrac{y-3}{2}$
+	
+	Обратная функция $g(y) = \dfrac{y-3}{2}$ при всех $y$.
+	
+	\quad б) $y=x^2-1$
+	
+	$f(x) = x^2-1$ $\Leftrightarrow$ $x = \pm \sqrt{f(x)+1}$	$\Leftrightarrow$ $g(y) = \pm \sqrt{y+1}$
+	
+	Обратная функция $g(y) = \pm \sqrt{y+1}$ при $y\ge -1$
+	
+	\quad в) $y=\sqrt[3]{1-x^3}$
+	
+	$f(x) = \sqrt[3]{1-x^3}$ $\Leftrightarrow$ $(f(x))^3 = 1-x^3$ $\Leftrightarrow$ $x = \sqrt[3]{1-(f(x))^3}$ $\Leftrightarrow$ $g(y) = \sqrt[3]{1-y^3}$
+	
+	Обратная функция $g(y) = \sqrt[3]{1-y^3}$ при всех $y$
+	
+	\quad г) $y=\lg\dfrac{x}{2}$
+	
+	$f(x) = \lg\dfrac{x}{2}$ $\Leftrightarrow$ $10^{f(x)} = \dfrac{x}{2}$ $\Leftrightarrow$ $x = 2\cdot10^{f(x)}$
+	
+	Обратная функция $g(y) = 2\cdot 10^y$ при всех $y$
+	
+	
+	\quad д) $y=\arctan (3x)$
+	
+	$f(x) = \arctan(3x)$ $\Leftrightarrow$ $3x = \tan(f(x))$ $\Leftrightarrow$ $x = \dfrac{\tan(f(x))}{3}$
+	
+	Обратная функция $g(y) = \dfrac{\tan(y)}{3}$ при $y\in \left(-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right)$
+	\medskip
+	
+	{\bf 40.} Для функции 
+	
+	\begin{equation*}
+	f(x) = \begin{cases}
+		x, \text{ если } x\le 0 \\
+		x^2, \text{ если } x>0
+	\end{cases}
+	\end{equation*}
+	
+	найти обратную.
+	
+	{\tt Решение:} 
+	
+	$f(x) = x$ при $x\le 0$ $\Rightarrow$ $g(y) = y$ при $y\le 0$
+	
+	$f(x) = x^2$ при $x = \sqrt{f(x)}$ $\Rightarrow$ $g(y) = \sqrt{y}$ при $y>0$.
+	\medskip
+	
+	{\bf 41.} Данные функции записать в виде цепи равенства, каждое звено которой содержит простейшую элементарную функцию (степенную, показательную, тригонометрическую и т.п.):
+	
+	{\tt Решение:} а) $y=(2x-5)^{10}$
+	
+	$y=u^{10}$ $\Rightarrow$ $u = 2x-5$
+	
+	\quad б) $y=2^{\cos(x)}$
+	
+	$y = 2^k$ $\Rightarrow$ $k = \cos(x)$
+	
+	\quad в) $y=\lg\tan\dfrac{x}{2}$
+	
+	$y =\lg k$ $\Rightarrow$ $k = \tan u$ $\Rightarrow$ $u = \dfrac{x}{2}$
+	
+	\quad г) $y= \arcsin(3^{-x^2})$
+	
+	$y = \arcsin(k)$ $\Rightarrow$ $k = 3^u$ $\Rightarrow$ $u = -l$ $\Rightarrow$ $l = x^2$
+	\medskip
+	
+	$42.$ Сложные функции, заданные цепью равенств, записать в виде одного равенства:
+	
+	{\tt Решение:} а) $y=u^2$, $u=\sin(x)$ $\Leftrightarrow$ $y = \sin^2 x$
+	
+	\quad б) $y= \arctan u$, $u=\sqrt{v}$, $v=\lg(x)$ $\Leftrightarrow$ $y=\arctan\sqrt{\lg(x)}$
+	
+	\quad	в) 	
+	$y = \begin{cases}
+	2u \text{, если } u\le 0 \\
+	0 \text{, если } u>0
+	\end{cases}$ \qquad $u=x^2-1$
+	
+	$
+		y = \begin{cases}
+		2(x^2-1) \text{, если } x^2-1\le0 \quad\Leftrightarrow\quad x\in[-1,1] \\
+		0 \text{, если } x^2-1>0 \quad\Leftrightarrow\quad x\in(-\infty,-1)\cup(1,+\infty)
+		\end{cases}
+	$
+	\medskip
+	
+	{\bf 43.} Записать в явном виде функции $y$, заданные уравнениями:
+	
+	{\tt Решение:} а) $x^2 -\arccos y =\pi$
+	
+	$\arccos y = x^2 -\pi$ $\Leftrightarrow$ $y= \cos(x^2-\pi) = -\cos(x^2)$, 
+	
+	при $0\le x^2-\pi\le \pi$ $\Leftrightarrow$ $\pi \le x^2 \le 2\pi$ $\Leftrightarrow$ $\sqrt{\pi} \le |x| \le \sqrt{2\pi}$
+	
+	{\tt Ответ:} $y=-\cos(x^2)$ при $|x|\in [\sqrt{\pi},\sqrt{2\pi}]$
+	
+	\quad б) $10^x + 10^y = 10$
+	
+	$10^x + 10^y = 10$ $\Leftrightarrow$ $10^y = 10-10^x$ $\Leftrightarrow$ $y = \lg (10-10^x)$
+	
+	$10-10^x>0$ $\Leftrightarrow$ $10^x<10^1$ $\Leftrightarrow$ $x\in (-\infty, 1)$
+	
+	{\tt Ответ:} $y = \lg(10-10^x)$ при $x\in (-\infty, 1)$
+	
+	\quad в) $x+|y| = 2y$ 
+	
+	$
+	y = \begin{cases}
+		2y -x \text{, при } y\ge 0 \\
+		x - 2y \text{, при } y<0	
+	\end{cases} 
+	$
+	
+	$y = x$ при $x \in (0, +\infty)$ \quad $y=\dfrac{x}{3}$ при $x\in (-\infty, 0)$
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
