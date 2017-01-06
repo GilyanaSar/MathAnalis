@@ -1,0 +1,433 @@
+\documentclass[12pt]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cancel}
+
+%\usepackage[leqno]{amsmath}
+\pagestyle{empty}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% Цвета для гиперссылок
+\definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
+\definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
+
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\usepackage{tikz}
+\usepackage{chngcntr}
+
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+
+
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+\vspace{5mm}
+
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+
+\parskip=1pt %интервал между абзацами
+\oddsidemargin=-1.3cm %отступ от правого края
+\topmargin=-2.5cm %отступ от верхнего края
+\textwidth=18.5cm %Ширина текста
+\textheight=24cm
+
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\renewcommand{\baselinestretch}{1.25}%Расстояние между строками
+
+
+
+\begin{document}
+	
+	При нахождении пределов вида 
+	\[
+		\lim\limits_{x\to a}[\varphi(x)]^{\psi(x)}=C
+	\tag{1}\label{fm:01}
+	\]
+	следует иметь в виду, что:
+	
+	1) если существуют конечные пределы
+	\[
+		\lim\limits_{x\to a}\varphi(x)=A\quad\text{и}\quad\lim\limits_{x\to a}\psi(x) = B,
+	\]
+	то $C=A^B$
+	
+	2) если $\lim\limits_{x\to a}\varphi(x) = A\neq1$ и $\lim\limits_{x\to a}\psi(x) = \pm \infty$, то вопрос о нахождении предела (\ref{fm:01}) решается непосредственно;
+	
+	3) если $\lim\limits_{x\to a}\varphi(x)=1$ и $\lim\limits_{x\to a}\psi(x)=\infty$, то полагают $\varphi(x)=1+\alpha(x)$, где $\alpha(x)\to0$ при $x\to \alpha$ и, следовательно,
+	\[
+		C=\lim\limits_{x\to a}[[1+\alpha(x)]^{\frac{1}{\alpha(x)}}]^{\alpha(x)\psi(x)} = e^{\lim\limits_{x\to a}\alpha(x)\psi(x)} = e^{\lim\limits_{x\to a}[\varphi(x)-1]\psi(x)},
+		\tag{2}\label{fm:02}
+	\]
+	где $e=2,718\dots$ - число Эйлера.
+	
+	{\tt Пример} 7. Найти
+	\[
+		\lim\limits_{x\to 0}\left(\dfrac{\sin 2x}{x}\right)^{1+x}
+	\]
+	
+	{\tt Решение.} Здесь
+	\[
+		\lim\limits_{x\to 0}\left(\dfrac{\sin 2x}{x}\right) = 2\quad\text{и}\quad \lim\limits_{x\to 0}(1+x)=1
+	\]
+	следовательно
+	\[
+		\lim\limits_{x\to 0}\left(\dfrac{\sin 2x}{x}\right)^{1+x} = 2^1=2
+	\]
+	
+	{\tt Пример} 8. Найти
+	\[
+		\lim\limits_{x\to \infty}\left(\dfrac{x+1}{2x+1}\right)^{x^2}
+	\]
+	
+	{\tt Решение}. Имеем:
+	\[
+		\lim\limits_{x\to \infty}\dfrac{x+1}{2x+1} = \lim\limits_{x\to\infty}\dfrac{1+\frac{1}{x}}{2+\frac{1}{x}} = \dfrac{1}{2}\quad\text{и}\quad\lim\limits_{x\to\infty}x^2=+\infty
+	\]
+	Поэтому
+	\[
+		\lim\limits_{x\to\infty}\left(\dfrac{x+1}{2x+1}\right)^{x^2} = 0
+	\]
+	
+	{\tt Пример} 9. Найти
+	\[
+		\lim\limits_{x\to\infty}\left(\dfrac{x-1}{x+1}\right)^x
+	\]
+	
+	{\tt Решение}. Имеем:
+	\[
+		\lim\limits_{x\to\infty}\dfrac{x-1}{x+1} = \lim\limits_{x\to\infty}\dfrac{1-\frac{1}{x}}{1+\frac{1}{x}}=1
+	\]
+	Произведя указанное выше преобразование, получим:
+	\[
+		\lim\limits_{x\to\infty}\left(\dfrac{x-1}{x+1}\right)^x = \lim\limits_{x\to\infty}\left[1+\left(\dfrac{x-1}{x+1}-1\right)\right]^x = \lim\limits_{x\to\infty}\left[\left[1+\left(\dfrac{-2}{x+1}\right)\right]^{\frac{x+1}{-2}}\right]^{-\frac{2x}{x+1}} = e^{\lim\limits_{x\to\infty}\frac{-2x}{x+1}} = e^{-2}
+	\]
+	В данном случае, не прибегая к общему приему, можно найти предел проще:
+	\[
+		\lim\limits_{x\to\infty}\left(\dfrac{x-1}{x+1}\right)^x = \lim\limits_{x\to\infty} \dfrac{\left(1-\frac{1}{x}\right)^x}{\left(1+\frac{1}{x}\right)^x} = \dfrac{\lim\limits_{x\to\infty}\left[\left(1-\frac{1}{x}\right)^{-x}\right]^{-1}}{\lim\limits_{x\to\infty}\left(1+\frac{1}{x}\right)^x} = \dfrac{e^{-1}}{e} = e^{-2}
+	\]
+	Вообще, полезно помнить, что
+	\[
+		\lim\limits_{x\to\infty}\left(1+\frac{k}{x}\right)^x = e^k\tag{3}\label{fm:03}
+	\]
+	
+	\medskip
+	{\bf 241.} $\lim\limits_{x\to0}\left(\dfrac{2+x}{3-x}\right)^x$.  Отсюда верно
+	\[
+		\lim\limits_{x\to0}\dfrac{2+x}{3-x} = \dfrac{2}{3}\quad\text{и}\quad\lim\limits_{x\to0}x = 0,
+	\]
+	следовательно
+	\[
+		\lim\limits_{x\to0}\left(\dfrac{2+x}{3-x}\right)^x = \left(\dfrac{2}{3}\right)^0 = 1
+	\]
+	
+	
+	\medskip
+	{\bf 242.} $\lim\limits_{x\to1}\left(\dfrac{x-1}{x^2-1}\right)^{x+1}$. Отсюда верно
+	\[
+		\lim\limits_{x\to1}\dfrac{x-1}{x^2-1} = \lim\limits_{x\to1}\dfrac{x-1}{(x-1)(x+1)} = \lim\limits_{x\to1}\dfrac{1}{x+1} = \dfrac{1}{2}\quad\text{и}\quad\lim\limits_{x\to1}(x+1) = 2
+	\]
+	следовательно
+	\[
+		\lim\limits_{x\to1}\left(\dfrac{x-1}{x^2-1}\right)^{x+1} = \left(\dfrac{1}{2}\right)^2 = \dfrac{1}{4}
+	\]
+	
+	\medskip
+	{\bf 243.} $\lim\limits_{x\to\infty}\left(\dfrac{1}{x^2}\right)^{\frac{2x}{x+1}}$. Отсюда верно
+	\[
+		\lim\limits_{x\to\infty}\dfrac{1}{x^2} = 0\quad\text{и}\quad\lim\limits_{x\to\infty}\dfrac{2x}{x+1} = \lim\limits_{x\to\infty} \dfrac{2}{1+\frac{1}{x}} = 2,
+	\]
+	следовательно
+	\[
+		\lim\limits_{x\to\infty}\left(\dfrac{1}{x^2}\right)^{\frac{2x}{x+1}} = 0^2=0
+	\]
+	
+	\medskip
+	{\bf 244.} $\lim\limits_{x\to0}\left(\dfrac{x^2-2x+3}{x^2-3x+2}\right)^{\frac{\sin x}{x}}$. Отсюда верно
+	\[
+		\lim\limits_{x\to0}\dfrac{x^2-2x+3}{x^2-3x+2} = \dfrac{3}{2}\quad\text{и}\quad\lim\limits_{x\to0}\dfrac{\sin x}{x}=1,
+	\]
+	следовательно
+	\[
+	\lim\limits_{x\to0}\left(\dfrac{x^2-2x+3}{x^2-3x+2}\right)^{\frac{\sin x}{x}} = \left(\dfrac{3}{2}\right)^1 = \dfrac{3}{2}
+	\]
+	
+	\medskip
+	{\bf 245.} $\lim\limits_{x\to\infty}\left(\dfrac{x^2+2}{2x^2+1}\right)^{x^2}$. Отсюда верно
+	\[
+		\lim\limits_{x\to\infty} \dfrac{x^2+2}{2x^2+1} = \lim\limits_{x\to\infty} \dfrac{1+\frac{2}{x^2}}{2+\frac{1}{x^2}} = \dfrac{1}{2}\quad\text{и}\quad\lim\limits_{x\to\infty}x^2=\infty,
+	\]
+	следовательно
+	\[
+		\lim\limits_{x\to\infty}\left(\dfrac{x^2+2}{2x^2+1}\right)^{x^2} = 0
+	\]
+	
+	\medskip
+	{\bf 246.} $\lim\limits_{n\to\infty}\left(1-\dfrac{1}{n}\right)^n$. Отсюда следует
+	\[
+		\lim\limits_{n\to\infty}\left(1-\dfrac{1}{n}\right) = 0\quad\text{и}\quad\lim\limits_{n\to\infty}n = \infty.
+	\]
+	Воспользуемся формулой (\ref{fm:02}). Получим
+	\[
+		\lim\limits_{n\to\infty}\left(1-\dfrac{1}{n}\right)^n = e^{\lim\limits_{n\to\infty}\left(1-\frac{1}{n}-1\right)n} = e^{\lim\limits_{n\to\infty}\frac{n}{n}} = e^1 = e
+	\]
+	
+	\medskip
+	{\bf 247.} $\lim\limits_{x\to\infty}\left(1+\dfrac{2}{x}\right)^x$. Отсюда следует
+	\[
+		\lim\limits_{x\to\infty}\left(1+\dfrac{2}{x}\right) = 1\quad\text{и}\quad\lim\limits_{x\to\infty}x = \infty.
+	\]
+	Воспользуемся формулой (\ref{fm:02}). Получим
+	\[
+		\lim\limits_{x\to\infty}\left(1+\dfrac{2}{x}\right)^x = e^{\lim\limits_{x\to\infty}\left(1+\frac{2}{x}-1\right)x} = e^{\lim\limits_{x\to\infty}\frac{2x}{x}} = e^2
+	\]
+	
+	\medskip
+	{\bf 248.} $\lim\limits_{x\to\infty}\left(\dfrac{x}{x+1}\right)^x$. Отсюда следует
+	\[
+		\lim\limits_{x\to\infty}\dfrac{x}{x+1} = \lim\limits_{x\to\infty}\dfrac{1}{1+\frac{1}{x}} = 1\quad\text{и}\quad\lim\limits_{x\to\infty}x = \infty.
+	\]
+	Воспользуемся формулой (\ref{fm:02}). Получим
+	\[
+		\lim\limits_{x\to\infty}\left(\dfrac{x}{x+1}\right)^x = e^{\lim\limits_{x\to\infty}\left(\frac{x}{x+1}-1\right)x} = e^{\lim\limits_{x\to\infty}\frac{(x-x-1)x}{x+1}} = e^{\lim\limits_{x\to\infty}\frac{-x}{x+1}} = e^{-1}
+	\]
+	
+	\medskip
+	{\bf 249.} $\lim\limits_{x\to\infty}\left(\dfrac{x-1}{x+3}\right)^{x+2}$. Отсюда следует
+	\[
+		\lim\limits_{x\to\infty}\dfrac{x-1}{x+1} = \lim\limits_{x\to\infty}\dfrac{1-\frac{1}{x}}{1+\frac{3}{x}} = 1\quad\text{и}\quad\lim\limits_{x\to\infty}(x+2)=\infty
+	\]
+	Воспользуемся формулой (\ref{fm:02}). Получим
+	\[
+		\lim\limits_{x\to\infty}\left(\dfrac{x-1}{x+3}\right)^{x+2} = e^{\lim\limits_{x\to\infty}\left(\frac{x-1}{x+3}-1\right)(x+2)} = e^{\lim\limits_{x\to\infty}\frac{(x-1-x-3)(x+2)}{x+3}} = e^{\lim\limits_{x\to\infty}\frac{-4(x+2)}{x+3}} = e^{-4}
+	\]
+	
+	\medskip
+	{\bf 250.} $\lim\limits_{n\to\infty}\left(1+\dfrac{x}{n}\right)^n$. Отсюда следует
+	\[
+		\lim\limits_{n\to\infty}\left(1+\dfrac{x}{n}\right) = 1\quad\text{и}\quad\lim\limits_{n\to\infty}n = \infty
+	\]
+	Воспользуемся формулой (\ref{fm:02}). Получим
+	\[
+		\lim\limits_{n\to\infty}\left(1+\dfrac{x}{n}\right)^n = e^{\lim\limits_{n\to\infty}\left(1+\frac{x}{n}-1\right)n} = e^{\lim\limits_{n\to\infty}\frac{x\cdot n}{n}} = e^x
+	\]
+	
+	
+	\medskip
+	{\bf 251.} $\lim\limits_{x\to0}(1+\sin x)^{\frac{1}{x}}$. Отсюда следует
+	\[
+		\lim\limits_{x\to0}(1+\sin x) = 1+0 =1\quad\text{и}\quad\lim\limits_{x\to0}\dfrac{1}{x} = \infty
+	\]
+	Воспользуемся формулой (\ref{fm:02}). Получим
+	\[
+		\lim\limits_{x\to0}(1+\sin x)^{\frac{1}{x}} = e^{\lim\limits_{x\to0}(1+\sin x-1)\frac{1}{x}} = e^{\lim\limits_{x\to0}\frac{\sin x}{x}} = e^1=e
+	\]
+	
+	\medskip
+	{\bf 252.} а) $\lim\limits_{x\to0}(\cos x)^{\frac{1}{x}}$. Отсюда следует
+	\[
+		\lim\limits_{x\to0}\cos x = \cos 0 = 1\quad \text{и}\quad\lim\limits_{x\to0}\dfrac{1}{x} = \infty
+	\]
+	Воспользуемся формулой (\ref{fm:02}). Получим
+	\[
+		\lim\limits_{x\to0}(\cos x)^{\frac{1}{x}} = e^{\lim\limits_{x\to0}(\cos x-1)\frac{1}{x}} = e^{-\lim\limits_{x\to0}\frac{1-\cos^2 x}{(1+\cos x)x}} = e^{-\lim\limits_{x\to0}\frac{\sin^2 x}{x(1+\cos x)}} = e^{-\lim\limits_{x\to0}\frac{\sin x}{(1+\cos x)}} = e^{-\frac{0}{2}} = e^0 = 1
+	\]
+	
+	\medskip
+	б) $\lim\limits_{x\to0}(\cos x)^{\frac{1}{x^2}}$. Отсюда следует
+	\[
+		\lim\limits_{x\to0}\cos x = \cos 0 = 1\quad\text{и}\quad\lim\limits_{x\to0}\frac{1}{x^2} = \infty
+	\]
+	Воспользуемся формулой (\ref{fm:02}). Получим
+	\[
+		\lim\limits_{x\to0}(\cos x)^{\frac{1}{x^2}} = e^{\lim\limits_{x\to0}(\cos x-1)\frac{1}{x^2}} = e^{-\lim\limits_{x\to0}\frac{1-\cos^2 x}{(1+\cos x)x^2}} = e^{-\lim\limits_{x\to0}\frac{\sin^2 x}{(1+\cos x)x^2}} = e^{-\frac{1}{2}} = \dfrac{1}{\sqrt{e}}
+	\]
+	
+	При вычислении приведенных ниже пределов полезно знать, что если существует и положителен $\lim\limits_{x\to a}[\ln f(x)]=\ln [\lim\limits_{x\to a}f(x)]$.
+	
+	{\tt Пример} 10. Доказать, что
+	\[
+		\lim\limits_{x\to0}\dfrac{\ln(1+x)}{x} = 1\tag{4}\label{fm:ln}
+	\]
+	
+	{\tt Решение.} Имеем:
+	\[
+		\lim\limits_{x\to0}\dfrac{\ln(1+x)}{x} = \lim\limits_{x\to0}[\ln(1+x)^{\frac{1}{x}}] = \ln[\lim\limits_{x\to0}(1+x)^{\frac{1}{x}}] = \ln e =1
+	\]
+	
+	\medskip
+	{\bf 253.} $\lim\limits_{x\to\infty}[\ln(2x+1)-\ln(x+2)] = \lim\limits_{x\to\infty} \ln \dfrac{2x+1}{x+2} = \ln \lim\limits_{x\to\infty}\dfrac{2x+1}{x+2} = \ln 2 $
+	
+	\medskip
+	{\bf 254.} $\lim\limits_{x\to0}\dfrac{\lg(1+10x)}{x} = \lim\limits_{x\to0} \dfrac{\ln(1+10x)}{x\ln10} = \lg e \lim\limits_{x\to0} \ln (1+10x)^{\frac{1}{x}} = \lg e \ln e^{10} = 10\lg e$
+	
+	{\bf 255.} $\lim\limits_{x\to0}\ln\left( \dfrac{1}{x}\sqrt{\dfrac{1+x}{1-x}}\right)  = \lim\limits_{x\to0}\ln \sqrt{\left(\dfrac{1+x}{1-x}\right)^{\frac{1}{x}}} = \dfrac{1}{2} \ln\lim\limits_{x\to0} \left(\dfrac{1+x}{1-x}\right)^{\frac{1}{x}} = \dfrac{1}{2} \ln e^{\lim\limits_{x\to0}\left(\frac{1+x}{1-x}-1\right)\frac{1}{x}} = \dfrac{1}{2}\ln e^{\lim\limits_{x\to0}\frac{2x}{(1-x)x}} = 
+	$
+	
+	$
+	= \dfrac{1}{2}\ln e^{\lim\limits_{x\to0}\frac{2}{1-x}} =  \dfrac{1}{2}\ln e^{\frac{2}{1-0}} = \dfrac{1}{2}\ln e^2 = \dfrac{1}{2}\cdot2 = 1$   
+	
+	\medskip
+	{\bf 256.} $\lim\limits_{x\to+\infty} x[\ln(1+x)-\ln x] = \lim\limits_{x\to+\infty} x\ln \dfrac{1+x}{x} = \lim\limits_{x\to+\infty}\ln\left(\dfrac{1+x}{x}\right)^x = \ln \lim\limits_{x\to+\infty}\left(1+\dfrac{1}{x}\right)^x = e$
+	
+	\medskip
+	{\bf 257.} $\lim\limits_{x\to0}\dfrac{\ln(\cos x)}{x^2} = \lim\limits_{x\to0} \ln (\cos x)^{\frac{1}{x^2}} = \ln \lim\limits_{x\to0} (\cos x)^{\frac{1}{x^2}} = \ln e^{-\frac{1}{2}} = -\dfrac{1}{2}$ 
+	
+	\medskip
+	{\bf 258.} $\lim\limits_{x\to0}\dfrac{e^x-1}{x}$. Заменим $t=e^x-1$. Получим $x=\ln(t+1)$
+	\[
+		\lim\limits_{t\to0}\dfrac{e^{\ln(t+1)}-1}{\ln(t+1)} = \lim\limits_{t\to0}\dfrac{t+1-1}{\ln(t+1)} = \lim\limits_{t\to0} \dfrac{1}{\frac{\ln(t+1)}{t}} =  1
+	\]
+	
+	\medskip 
+	{\bf 259.} $\lim\limits_{x\to0}\dfrac{a^x-1}{x}$ $(a>0)$. Заменим $t=a^x-1$. Получим $x=\log_a (t+1)$
+	\[
+		\lim\limits_{t\to0} \dfrac{t}{\log_a (t+1)} = \lim\limits_{t\to0} \dfrac{t\ln a}{\ln (t+1)} = \lim\limits_{t\to0} \dfrac{\ln a}{\ln(t+1)^\frac{1}{t}} = \ln a
+	\]
+	
+	\medskip
+	{\bf 260.} $\lim\limits_{n\to\infty} n(\sqrt[n]{a}-1)$ $(a>0)$. Заменим $t=\sqrt[n]{a}-1$. Получим $n = \dfrac{1}{\log_a(t+1)}$
+	\[
+		\lim\limits_{t\to0}\dfrac{t}{\log_a(t+1)} = \lim\limits_{t\to0} \dfrac{t\ln a}{\ln (t+1)} = \lim\limits_{t\to0} \dfrac{\ln a}{\ln(t+1)^\frac{1}{t}} = \ln a
+	\]
+	
+	\medskip
+	{\bf 261.} $\lim\limits_{x\to0}\dfrac{e^{ax}-e^{bx}}{x} = \lim\limits_{x\to0}a\dfrac{e^{ax}-1}{ax}-\lim\limits_{x\to0}b\dfrac{e^{bx}-1}{bx} = a-b$
+	
+	\medskip
+	{\bf 262.} $\lim\limits_{x\to0}\dfrac{1-e^{-x}}{\sin x} = \lim\limits_{x\to0} \dfrac{(e^x-1)x}{xe^x\sin x} = \lim\limits_{x\to0} \dfrac{e^x-1}{x e^x}$. Заменим $t=e^x-1$. Получим $x=\ln(t+1)$
+	\[
+		\lim\limits_{t\to0} \dfrac{t}{(t+1)\ln(t+1)} = \lim\limits_{t\to0} \dfrac{1}{t+1}\cdot\dfrac{t}{\ln(t+1)} = \dfrac{1}{1+0} = 1
+	\]	
+	
+	\medskip
+	{\bf 263.} a) $\lim\limits_{x\to0}\dfrac{\sh x}{x} = \lim\limits_{x\to0} \dfrac{e^x-e^{-x}}{2x} = \lim\limits_{x\to0} \dfrac{e^{2x}-1}{2e^{x}x} = 	\lim\limits_{x\to0} \dfrac{e^{2x}-e^x+e^x-1}{2e^x x} = 	\lim\limits_{x\to0} \dfrac{e^x-1}{2x}+	\lim\limits_{x\to0} \dfrac{e^x-1}{2e^x x}$. 
+	
+	\vspace{2mm}
+	Заменим $t=e^x-1$. Получим $x=\ln(t+1)$
+	\[
+			\lim\limits_{t\to0}\dfrac{t}{2\ln(t+1)} + \lim\limits_{t\to0} \dfrac{t}{2(t+1)\ln(t+1)} = \dfrac{1}{2}+\dfrac{1}{2} = 1
+	\]
+	
+	\medskip
+	б) $\lim\limits_{x\to0}\dfrac{\ch x-1}{x^2} = \lim\limits_{x\to0} \dfrac{e^x+e^{-x}-2}{2x^2} = \lim\limits_{x\to0} \dfrac{e^{2x}+1-2e^x}{2e^x x^2} = \lim\limits_{x\to0} \dfrac{(e^x-1)^2}{2e^x x^2}$.
+	
+	\vspace{2mm}
+	Заменим $t=e^x-1$. Получим $x=\ln(t+1)$
+	\[
+		\lim\limits_{t\to0}\dfrac{t^2}{2(t+1)\ln^2(t+1)} = \lim\limits_{t\to0} \dfrac{1}{2(t+1)(\ln(t+1)^{\frac{1}{t}})^2} = \lim\limits_{t\to0} \dfrac{1}{2(1+0)} = \dfrac{1}{2}
+	\]
+	
+	\bigskip
+	Найти следующие односторонние пределы:
+	
+	\medskip
+	{\bf 264.} a) $\lim\limits_{x\to-\infty}\dfrac{x}{\sqrt{x^2+1}}$. Заменим $t=-x$. Получим
+	\[
+		\lim\limits_{t\to+\infty} \dfrac{-t}{\sqrt{t^2+1}} = \lim\limits_{t\to+\infty} \dfrac{-1}{\sqrt{1+\frac{1}{t^2}}} = \dfrac{1}{1}=1
+	\]
+	
+	\medskip
+	б) $\lim\limits_{x\to+\infty}\dfrac{x}{\sqrt{x^2+1}} = \lim\limits_{x\to+\infty} \dfrac{1}{\sqrt{1+\frac{1}{x^2}}} = \dfrac{1}{1} = 1$
+	
+	\medskip
+	{\bf 265.} a) $\lim\limits_{x\to-\infty} th(x) = \lim\limits_{x\to-\infty} \dfrac{e^x-e^{-x}}{e^x+e^{-x}}$. Заменим $t=-x$. Получим
+	\[
+	\lim\limits_{t\to+\infty}\dfrac{e^{-t}-e^t}{e^{-t}+e^t} = \lim\limits_{t\to+\infty} \dfrac{1-e^{2t}}{1+e^{2t}} = \lim\limits_{t\to+\infty} \dfrac{\frac{1}{e^{2t}}-1}{\frac{1}{e^{2t}}+1} = \dfrac{-1}{1}=-1
+	\]
+	
+	\medskip
+	б) $\lim\limits_{x\to+\infty}\dfrac{e^{x}-e^{-x}}{e^x+e^{-x}} = \lim\limits_{x\to+\infty} \dfrac{e^{2x}-1}{e^{2x}+1} = \lim\limits_{x\to+\infty} \dfrac{1-\frac{1}{e^{2x}}}{1+\frac{1}{e^{2x}}} = \dfrac{1}{1} = 1$
+	
+	
+	\medskip
+	{\bf 266.} a)  $\lim\limits_{x\to-0}\dfrac{1}{1+e^{\frac{1}{x}}} $. Заменим $t=-\dfrac{1}{x}$. Получим
+	\[
+		\lim\limits_{t\to+\infty}\dfrac{1}{1+e^{-t}} = \lim\limits_{t\to+\infty} \dfrac{e^t}{e^t+1} = \lim\limits_{t\to+\infty} \dfrac{1}{1+\frac{1}{e^t}} = \dfrac{1}{1} = 1
+	\]
+	
+	\medskip
+	б) $\lim\limits_{t\to+0} \dfrac{1}{1+e^{\frac{1}{x}}}$. Заменим $t=\dfrac{1}{x}$. Получим
+	\[
+		\lim\limits_{t\to+\infty} \dfrac{1}{1+e^t} = \lim\limits_{t\to+\infty} \dfrac{\frac{1}{e^t}}{\frac{1}{e^t}+1} = \dfrac{0}{1+0} = 0
+	\]
+	
+	\medskip
+	{\bf 267.} $\lim\limits_{x\to-\infty} \dfrac{\ln(1+e^x)}{x}$. Заменим $t=-x$. Получим
+	\[
+		\lim\limits_{t\to+\infty} \dfrac{\ln(1+e^{-t})}{-t} = \lim\limits_{t\to+\infty} \dfrac{\ln(1+e^t)-t}{-t} = 1-\lim\limits_{t\to+\infty} \dfrac{\ln(1+e^t)}{t} = 1-1=0
+	\]
+	
+	\medskip
+	б) $\lim\limits_{x\to+\infty} \dfrac{\ln(1+e^x)}{x} = \lim\limits_{x\to+\infty}\ln(1+e^x)^\frac{1}{x} = 1$
+	
+	\medskip
+	{\bf 268.} а) $\lim\limits_{x\to-0}\dfrac{|\sin x|}{x}$. Заменим $t=-x$. Получим
+	\[
+		\lim\limits_{t\to+0} \dfrac{|\sin(-t)|}{-t} = -\lim\limits_{t\to+0}\dfrac{\sin t}{t} = -1
+	\]
+	
+	\medskip
+	б) $\lim\limits_{x\to+0}\dfrac{|\sin x|}{x} = \lim\limits_{x\to+0} \dfrac{\sin x}{x} = 1$
+	
+	\medskip
+	{\bf 269.} a) $\lim\limits_{x\to1-0}\dfrac{x-1}{|x-1|}$. Заменим $t=-x+1$. Получим
+	\[
+		\lim\limits_{t\to+0}\dfrac{-t}{|-t|} = -\lim\limits_{t\to+0} \dfrac{t}{t} = -1
+	\]
+	
+	\medskip
+	б) $\lim\limits_{x\to1+0}\dfrac{x-1}{|x-1|}$. Заменим $t=x-1$. Получим
+	\[
+		\lim\limits_{t\to+0}\dfrac{t}{|t|} = \lim\limits_{t\to+0} \dfrac{t}{t} = 1
+	\]	
+	
+	
+	\medskip
+	{\bf 270.} a) $\lim\limits_{x\to+2-0}\dfrac{x}{x-2}$. Заменим $t=2-x$. Получим
+	\[
+		\lim\limits_{t\to+0}\dfrac{2-t}{-t} = \lim\limits_{t\to+0} \dfrac{t-2}{t} = 1-\lim\limits_{t\to+0}\dfrac{2}{t} = -\infty
+	\]
+	
+	
+	б) $\lim\limits_{x\to2+0}\dfrac{x}{x-2}$. Заменим $t=x-2$. Получим
+	\[
+		\lim\limits_{t\to+0}\dfrac{t+2}{t} = 1+\lim\limits_{t\to+0}\dfrac{1}{t} = +\infty
+	\]
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
